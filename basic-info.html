@@ -4,40 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Educeptis - Categories</title>
+  
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     * {
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
+    
     body {
       background-color: #ffffff;
       min-height: 100vh;
+      margin: 0;
     }
+    
     .header {
       height: 60px;
       background-color: #ffffff;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+    
     .logo {
       font-size: 24px;
       font-weight: bold;
       color: #064C88;
     }
+    
     .logout-btn {
       color: rgb(247, 17, 17);
       display: flex;
       align-items: center;
       gap: 5px;
     }
+    
     /* Sidebar and Steps */
     .sidebar {
       background-color: #f8f9fa;
       border-right: 1px solid #e9ecef;
-      min-height: calc(100vh);
+      min-height: 100vh;
       padding: 20px;
     }
+    
     .step {
       position: relative;
       padding: 15px 0 15px 35px;
@@ -45,6 +56,7 @@
       font-size: 16px;
       margin-left: 20px;
     }
+    
     .step::before {
       content: '';
       position: absolute;
@@ -58,6 +70,7 @@
       background-color: #ffffff;
       z-index: 1;
     }
+    
     .step:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -67,14 +80,17 @@
       width: 2px;
       background-color: #ced4da;
     }
+    
     .step.active {
       color: #064C88;
       font-weight: bold;
     }
+    
     .step.active::before {
       background-color: #064C88;
       border-color: #064C88;
     }
+    
     /* Mobile Progress Bar */
     .progress-container {
       display: none;
@@ -82,12 +98,14 @@
       align-items: center;
       margin: 20px 0;
     }
+    
     .progress-step {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 10px;
     }
+    
     .progress-circle {
       width: 30px;
       height: 30px;
@@ -100,16 +118,19 @@
       justify-content: center;
       color: #6c757d;
     }
+    
     .progress-circle.active {
       background-color: #064C88;
       border-color: #064C88;
       color: #ffffff;
     }
+    
     .progress-label {
       color: #6c757d;
       font-size: 14px;
       text-align: center;
     }
+    
     @media (max-width: 768px) {
       .sidebar {
         border-right: none;
@@ -122,6 +143,7 @@
         display: flex;
       }
     }
+    
     /* Category Cards */
     .category-card {
       border: 1px solid #e9ecef;
@@ -130,20 +152,22 @@
       text-align: center;
       transition: transform 0.2s;
     }
+    
     .category-card:hover {
       transform: translateY(-5px);
     }
-    .card-image {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 15px;
-      border-radius: 10px;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-    }
+    
+    .gradient-text {
+        background: linear-gradient(to right, #064C88, #FFC552);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: bold;
+        font-size: 44px;
+        }
+
     .gradient-button {
-      background: linear-gradient(to right, #064C88, rgb(252, 197, 82));
+      background: linear-gradient(to right, #064C88, #FFC552);
       color: white;
       border: none;
       padding: 12px 40px;
@@ -151,17 +175,26 @@
       width: 300px;
       max-width: 100%;
     }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #6c757d;
+      font-weight: bold;
+    }
+    
+    .form-label .required {
+      color: #dc3545;
+    }
   </style>
 </head>
 <body>
   <header class="header fixed-top d-flex justify-content-between align-items-center px-3">
     <div class="logo">Educeptis</div>
-    <button class="logout-btn btn">
+    <a href="#" class="logout-btn btn btn-link">
       Log out
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12M4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" fill="#FF3B30"/>
-      </svg>
-    </button>
+      <i class="fas fa-sign-out-alt ml-2"></i>
+    </a>
   </header>
 
   <div class="container-fluid" style="margin-top: 60px;">
@@ -198,41 +231,95 @@
       </aside>
 
       <!-- Main Content -->
-      <main class="col-md-9 col-lg-10">
-        <div class="main-content d-flex flex-column align-items-center text-center p-4">
-          <h2 class="title mb-4">Categories</h2>
-          <p class="mb-4">Please confirm your category by clicking on one of the category boxes</p>
+      <main class="col-md-9 col-lg-6 mx-auto px-4"> <!-- Changed width here -->
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="gradient-text">Basic Information</h1>
+        </div>
+        <p class="text-muted small mb-4">All the fields with asterisks(<span class="text-danger">*</span>) are compulsory</p>
 
-          <div class="row g-4">
+        <form class="mt-4">
+          <div class="row g-3">
+            <!-- First Name -->
             <div class="col-md-6">
-              <div class="category-card">
-                <div class="card-image" style="background-image: url('Img/Student.jpg');"></div>
-                <h3 class="mb-3">Student</h3>
+              <label class="form-label" for="firstName">First Name<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" id="firstName" placeholder="Enter name" class="form-control">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
             </div>
+
+            <!-- Last Name -->
             <div class="col-md-6">
-              <div class="category-card">
-                <div class="card-image" style="background-image: url('Img/Teacher.jpeg');"></div>
-                <h3 class="mb-3">Educator</h3>
+              <label class="form-label" for="lastName">Last Name<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" id="lastName" placeholder="Enter name" class="form-control">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
             </div>
+
+            <!-- Tertiary Institution -->
             <div class="col-md-6">
-              <div class="category-card">
-                <div class="card-image" style="background-image: url('Img/School.jpg');"></div>
-                <h3 class="mb-3">School</h3>
+              <label class="form-label" for="institution">Tertiary Institution<span class="required">*</span></label>
+              <div class="input-group">
+                <select id="institution" class="form-select">
+                  <option>Select your institution</option>
+                  <!-- Add more options here -->
+                </select>
+                <span class="input-group-text"><i class="fas fa-building"></i></span>
               </div>
             </div>
+
+            <!-- Registration Number -->
             <div class="col-md-6">
-              <div class="category-card">
-                <div class="card-image" style="background-image: url('Img/Company.jpg');"></div>
-                <h3 class="mb-3">Company</h3>
+              <label class="form-label" for="regNumber">Registration Number<span class="required">*</span></label>
+              <input type="text" id="regNumber" placeholder="Enter your registration number" class="form-control">
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="col-md-6">
+              <label class="form-label" for="dob">Date of birth<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="date" id="dob" class="form-control">
+                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="col-md-6">
+              <label class="form-label" for="gender">Gender<span class="required">*</span></label>
+              <div class="input-group">
+                <select id="gender" class="form-select">
+                  <option>Select your gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+                <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
               </div>
             </div>
           </div>
 
-          <button class="gradient-button btn mt-4 mb-3">Next step →</button>
-          <a href="#" class="prev-link text-decoration-none">← Previous step</a>
-        </div>
+          <!-- About Me -->
+          <div class="mt-4">
+            <label class="form-label" for="aboutMe">About me<span class="required">*</span></label>
+            <textarea id="aboutMe" placeholder="Message" class="form-control" rows="4"></textarea>
+          </div>
+
+          <!-- Terms Agreement -->
+          <div class="mt-3 form-check">
+            <input type="checkbox" class="form-check-input" id="termsAgree">
+            <label class="form-check-label" for="termsAgree">I agree to the terms and conditions.<span class="required">*</span></label>
+          </div>
+
+          <!-- Form Buttons -->
+          <div class="mt-4 d-flex flex-column align-items-center gap-3">
+            <button type="submit" class="gradient-button" style="width: 400px;">
+              Next step <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+            <button type="button" class="btn btn-light" style="width: 400px;">
+                <i class="fas fa-arrow-left me-2"></i> Previous step
+            </button>
+          </div>
+        </form>
       </main>
     </div>
   </div>
