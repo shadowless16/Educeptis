@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Educeptis - Profile & Interests</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    
+    body {
+      background-color: #ffffff;
+      min-height: 100vh;
+      margin: 0;
+    }
+    
+    .header {
+      height: 60px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #064C88;
+    }
+    
+    .logout-btn {
+      color: rgb(247, 17, 17);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Sidebar and Steps */
+    .sidebar {
+      background-color: #f8f9fa;
+      border-right: 1px solid #e9ecef;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .step {
+      position: relative;
+      padding: 15px 0 15px 35px;
+      color: #6c757d;
+      font-size: 16px;
+      margin-left: 20px;
+    }
+    
+    .step::before {
+      content: '';
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      border: 2px solid #ced4da;
+      border-radius: 50%;
+      background-color: #ffffff;
+      z-index: 1;
+    }
+    
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: calc(50% + 10px);
+      height: 30px;
+      width: 2px;
+      background-color: #ced4da;
+    }
+    
+    .step.active {
+      color: #064C88;
+      font-weight: bold;
+    }
+    
+    .step.active::before {
+      background-color: #064C88;
+      border-color: #064C88;
+    }
+    
+    /* Mobile Progress Bar */
+    .progress-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+    
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .progress-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #ced4da;
+      background-color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+    }
+    
+    .progress-circle.active {
+      background-color: #064C88;
+      border-color: #064C88;
+      color: #ffffff;
+    }
+    
+    .progress-label {
+      color: #6c757d;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e9ecef;
+      }
+      .step-list {
+        display: none;
+      }
+      .progress-container {
+        display: flex;
+      }
+    }
+    
+    /* Category Cards */
+    .category-card {
+      border: 1px solid #e9ecef;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(to right, #064C88, #FFC552);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: bold;
+        font-size: 44px;
+        }
+
+    .gradient-button {
+      background: linear-gradient(to right, #064C88, #FFC552);
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      border-radius: 5px;
+      width: 300px;
+      max-width: 100%;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #6c757d;
+      font-weight: bold;
+    }
+    
+    .form-label .required {
+      color: #dc3545;
+    }
+
+    .upload-box {
+      border: 2px dashed #ced4da;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      background-color: #f8f9fa;
+      cursor: pointer;
+    }
+
+    .upload-box:hover {
+      background-color: #e9ecef;
+    }
+
+    .upload-box.dragover {
+      background-color: #064C88;
+      color: #ffffff;
+    }
+
+    .interest-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #064C88; /* Default text color */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    }
+
+    .interest-tag.selected {
+    background-color: #064C88; /* Blue background for selected tags */
+    color: #ffffff; /* White text for selected tags */
+    border-color: #064C88; /* Blue border for selected tags */
+    }
+
+    /* Hidden file input */
+    .hidden-file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="header fixed-top d-flex justify-content-between align-items-center px-3">
+    <div class="logo">Educeptis</div>
+    <a href="#" class="logout-btn btn btn-link">
+      Log out
+      <i class="fas fa-sign-out-alt ml-2"></i>
+    </a>
+  </header>
+
+  <div class="container-fluid" style="margin-top: 60px;">
+    <div class="row">
+      <!-- Sidebar with Steps -->
+      <aside class="col-md-3 col-lg-2 p-0">
+        <div class="sidebar">
+          <div class="step-list">
+            <div class="step">Categories</div>
+            <div class="step">Basic Information</div>
+            <div class="step">Contact Details</div>
+            <div class="step active">Profile & Interests</div>
+          </div>
+          <!-- Mobile Progress Bar -->
+          <div class="progress-container">
+            <div class="progress-step">
+              <div class="progress-circle">1</div>
+              <span class="progress-label">Categories</span>
+            </div>
+            <div class="progress-step">
+              <div class="progress-circle">2</div>
+              <span class="progress-label">Basic Information</span>
+            </div>
+            <div class="progress-step">
+              <div class="progress-circle">3</div>
+              <span class="progress-label">Contact Details</span>
+            </div>
+            <div class="progress-step">
+              <div class="progress-circle active">4</div>
+              <span class="progress-label">Profile & Interests</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="col-md-9 col-lg-6 mx-auto px-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="gradient-text">Profile & Interests</h1>
+        </div>
+        <p class="text-muted small mb-4"></p>
+
+        <!-- Upload Box -->
+        <div class="upload-box mb-4" id="uploadBox">
+          <i class="fas fa-image fa-2x mb-2"></i>
+          <p>Click to upload or drag and drop your file here</p>
+          <p class="text-muted small">Max size 2 MB</p>
+          <p class="text-muted small">Supported formats: JPG, PNG, GIF</p>
+        </div>
+
+        <!-- Hidden File Input -->
+        <input type="file" id="fileInput" class="hidden-file-input" accept="image/jpeg, image/png, image/gif">
+
+        <!-- Interests Section -->
+        <div class="mb-4">
+            <h3 class="gradient-text">What are your interests?</h3>
+            <p class="text-muted small mb-4">Please pick any 5 interests below</p>
+            <div>
+              <span class="interest-tag">Sports</span>
+              <span class="interest-tag">Research</span>
+              <span class="interest-tag">Programming</span>
+              <span class="interest-tag">Creative Writing</span>
+              <span class="interest-tag">Volunteering</span>
+              <span class="interest-tag">Reading</span>
+              <span class="interest-tag">Blogging</span>
+              <span class="interest-tag">Traveling</span>
+              <span class="interest-tag">Vega</span>
+              <span class="interest-tag">Games</span>
+              <span class="interest-tag">Photography</span>
+              <span class="interest-tag">Designing</span>
+              <span class="interest-tag">Learning Languages</span>
+            </div>
+        </div>
+
+        <!-- Form Buttons -->
+        <div class="mt-4 d-flex flex-column align-items-center gap-3">
+          <button type="submit" class="gradient-button" style="width: 400px;">
+            Submit <i class="fas fa-arrow-right me-2"></i>
+          </button>
+          <button type="button" class="btn btn-light" style="width: 400px;">
+              <i class="fas fa-arrow-left me-2"></i> Previous step
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Add interactivity to interest tags
+    document.querySelectorAll('.interest-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        tag.classList.toggle('selected');
+      });
+    });
+
+    // Drag and drop functionality
+    const uploadBox = document.getElementById('uploadBox');
+    const fileInput = document.getElementById('fileInput');
+
+    uploadBox.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadBox.classList.add('dragover');
+    });
+
+    uploadBox.addEventListener('dragleave', () => {
+      uploadBox.classList.remove('dragover');
+    });
+
+    uploadBox.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadBox.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput.files = files; // Update the hidden file input
+        handleFiles(files);
+      }
+    });
+
+    uploadBox.addEventListener('click', () => {
+      fileInput.click(); // Trigger the hidden file input
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const files = e.target.files;
+      if (files.length > 0) {
+        handleFiles(files);
+      }
+    });
+
+    function handleFiles(files) {
+      const file = files[0];
+      if (file.size > 2 * 1024 * 1024) {
+        alert('File size exceeds 2 MB');
+        return;
+      }
+      if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
+        alert('Unsupported file format');
+        return;
+      }
+      // Handle the file upload (e.g., display the file name or preview)
+      alert(`File "${file.name}" is ready for upload`);
+    }
+  </script>
+</body>
+</html>
