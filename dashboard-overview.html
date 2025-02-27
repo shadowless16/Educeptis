@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Networking Platform Layout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-bar">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+      </div>
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Overview</a>
+      </nav>
+      <div class="nav-icons">
+        <i class="fas fa-home" title="Home"></i>
+        <i class="fas fa-heartbeat" title="Timeline"></i>
+        <i class="fas fa-user" title="Profile"></i>
+        <i class="fas fa-comment" title="Messages"></i>
+      </div>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search">
+      </div>
+      <!-- Icons for Notifications and Messages -->
+      <div class="icons">
+        <i class="fa fa-inbox"></i>
+        <i class="fas fa-bell"></i>
+      </div>
+      <!-- User Profile -->
+      <div class="user-profile">
+        <span>Julien</span>
+        <img src="profile.jpg" alt="Profile">
+      </div>
+    </div>
+  </header>
+
+  <!-- Grid Container -->
+  <div class="grid-container">
+    <!-- Left Sidebar -->
+    <div class="left-sidebar">
+        <!-- Navigation Menu -->
+        <div class="sidebar-content">
+          <!-- Overview (Active) -->
+          <div class="menu-item active">
+            <i class="fas fa-house"></i> <span>Overview</span>
+          </div>
+          <!-- Profile and Resume -->
+          <div class="menu-item">
+            <i class="fas fa-user"></i> <span>Profile and Resume</span>
+          </div>
+          <!-- Scholarship and Internship -->
+          <div class="menu-item">
+            <i class="fas fa-graduation-cap"></i> <span>Scholarship and Internship</span>
+          </div>
+          <!-- Course and Learning Materials -->
+          <div class="menu-item">
+            <i class="fas fa-book"></i> <span>Course and Learning Materials</span>
+          </div>
+          <!-- Jobs and Freelancing -->
+          <div class="menu-item">
+            <i class="fas fa-briefcase"></i> <span>Jobs and Freelancing</span>
+          </div>
+          <!-- Crowdfunding for Tuition -->
+          <div class="menu-item">
+            <i class="fas fa-hand-holding-usd"></i> <span>Crowdfunding for Tuition</span>
+          </div>
+          <!-- Student Loan -->
+          <div class="menu-item">
+            <i class="fas fa-money-bill"></i> <span>Student Loan</span>
+          </div>
+          <!-- Community and Networking -->
+          <div class="menu-item">
+            <i class="fas fa-users"></i> <span>Community and Networking</span>
+          </div>
+          <!-- Settings and Support -->
+          <div class="menu-item">
+            <i class="fas fa-cog"></i> <span>Settings and Support</span>
+          </div>
+          <!-- Market Place -->
+          <div class="menu-item">
+            <i class="fas fa-store"></i> <span>Market Place</span>
+          </div>
+          <!-- Chat Room -->
+          <div class="menu-item">
+            <i class="fas fa-comment"></i> <span>Chat Room</span>
+          </div>
+          <!-- Time Manager -->
+          <div class="menu-item">
+            <i class="fas fa-clock"></i> <span>Time Manager</span>
+          </div>
+          <!-- Log out (Red) -->
+          <div class="menu-item logout">
+            <i class="fas fa-arrow-right-from-bracket"></i> <span>Log out</span>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Toggle Button (Moved outside sidebar) -->
+    <div class="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+
+    <!-- Cover Photo and Profile Details -->
+    <div class="cover-section">
+        <div class="cover-photo" style="background-image: url('cover-placeholder.jpg');"></div>
+        <div class="profile-details">
+          <img src="profile-placeholder.png" alt="Julia Richardson" class="profile-img">
+          <div class="profile-info">
+            <h2>Julia Richardson</h2>
+            <span>Student</span>
+            <span>@julia | Joined Feb 2025</span>
+          </div>
+          <div class="social-stats">
+            <span>13 Followers</span>
+            <span>18 Following</span>
+          </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="left-sub-column">
+        <div class="fund">Fund Section</div>
+        <div class="connections">My Connections (Madelyn, Steve, etc.)</div>
+      </div>
+      <div class="right-sub-column">
+        <div class="post-option">Share what's on your mind, Julia</div>
+        <div class="posts-display">Posts Display (e.g., Beach Video Post)</div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar">
+      <div>Complete Your Profile - 73%</div>
+      <div>Crowdfunding Approved Students</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>Reels Just for You - Become a Product Manager</div>
+  </div>
+
+  <!-- JavaScript for Toggling Sidebar -->
+  <script>
+    const sidebar = document.querySelector('.left-sidebar');
+    const mainContent = document.querySelector('.main-content');
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    const toggleIcon = toggleBtn.querySelector('i');
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        toggleIcon.classList.toggle('fa-chevron-left');
+        toggleIcon.classList.toggle('fa-chevron-right');
+    });
+  </script>
+</body>
+</html>
