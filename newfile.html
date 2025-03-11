@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educeptis - Educational Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #faf9f7;
+      font-size: 12px; /* Reduced font size */
+    }
+    .gradient-bg {
+      background: linear-gradient(90deg, #054D8B, #F9BD1A);
+    }
+    .sidebar {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 280px;
+      transition: width 0.3s ease; /* Transition for collapsible sidebar */
+    }
+    .sidebar.collapsed {
+      width: 64px; /* Width when collapsed */
+    }
+    .sidebar.collapsed .nav-link span {
+      display: none; /* Hide text when collapsed */
+    }
+    .main-content {
+      margin-left: 280px;
+      transition: margin-left 0.3s ease; /* Transition for collapsible sidebar */
+    }
+    .main-content.collapsed {
+      margin-left: 64px; /* Margin when sidebar is collapsed */
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+    }
+    .profile-header-bg {
+      height: 228px;
+      background: linear-gradient(to right, #e7e7e8, #f4f3f2);
+    }
+    .online-indicator {
+      width: 16px;
+      height: 16px;
+      background-color: #4caf50;
+      border: 2px solid white;
+    }
+    .video-container {
+      position: relative;
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .student-progress {
+      width: 96px;
+      height: 6px;
+      background-color: #f4f3f2;
+    }
+    .student-progress-bar {
+      height: 100%;
+      background-color: #4caf50;
+    }
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-0">
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand navbar-light bg-white border-bottom fixed-top">
+      <div class="container-fluid px-3">
+        <div class="d-flex align-items-center">
+          <a href="#" class="navbar-brand d-flex align-items-center me-4">
+            <div class="bg-primary rounded p-1 me-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M18 6H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h13l4-3.5L18 6Z" />
+                <path d="M12 13v8" />
+                <path d="M5 13v6a2 2 0 0 0 2 2h8" />
+              </svg>
+            </div>
+            <span class="text-primary">Educeptis</span>
+          </a>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Overview</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="input-group w-auto">
+            <span class="input-group-text bg-light border-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="search" class="form-control rounded-pill" placeholder="Search">
+          </div>
+          <button class="btn btn-outline-light p-2 position-relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+          </button>
+          <button class="btn btn-outline-light p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </button>
+          <button class="btn btn-outline-light p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </button>
+          <div class="d-flex align-items-center gap-2">
+            <span class="d-none d-md-block">Julia</span>
+            <img src="https://via.placeholder.com/32" alt="Julia" class="avatar rounded-circle border">
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar bg-white border-end">
+      <div class="p-3 border-bottom">
+        <button class="btn btn-outline-secondary w-100 d-flex align-items-center gap-2" id="collapse-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
+            <path d="M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4" />
+          </svg>
+          <span>Collapse</span>
+        </button>
+      </div>
+      <nav class="nav flex-column p-2">
+        <a href="#" class="nav-link active gradient-bg text-white rounded mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span>Overview</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Profile and Resume</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Scholarship and Internship</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+          <span>Course and Learning Materials</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>Jobs and Freelancing</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+          </svg>
+          <span>Crowdfunding for Tuition</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>Student Loan</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Community and Networking</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Settings and Support</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>Market Place</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Chat Room</span>
+        </a>
+        <a href="#" class="nav-link text-dark mb-1 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Time Manager</span>
+        </a>
+      </nav>
+      <div class="position-absolute bottom-0 w-100 p-3 border-top">
+        <a href="#" class="btn btn-outline-danger w-100 d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          Log out
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content pt-5">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-9">
+            <!-- Profile Header -->
+            <div class="card mb-4">
+              <div class="profile-header-bg rounded-top"></div>
+              <div class="card-body text-center">
+              <div class="position-relative d-inline-block">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Julia" class="rounded-circle border border-4 border-white mb-3 img-fluid">
+                <span class="position-absolute bottom-0 end-0 online-indicator rounded-circle"></span>
+              </div>
+              <span class="badge gradient-bg text-white mb-2">Student</span>
+              <h1 class="card-title">Julia Richardson</h1>
+              <div class="d-flex justify-content-center gap-3 text-muted mb-3">
+                <span>13 followers</span>
+                <span>16 following</span>
+                <span>@julia • Joined Feb 2025</span>
+              </div>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-outline-secondary rounded-pill d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Info
+                </button>
+                <button class="btn btn-outline-secondary rounded-pill d-flex align-items-center gap-2"></button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+                </button>
+                <button class="btn btn-outline-secondary rounded-pill d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+                Twitter
+                </button>
+              </div>
+              </div>
+              <ul class="nav nav-tabs justify-content-center">
+              <li class="nav-item"><a class="nav-link active" href="#">Timeline</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Connections <span class="badge bg-light text-dark rounded-pill">12</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Groups <span class="badge bg-light text-dark rounded-pill">14</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Courses <span class="badge bg-light text-dark rounded-pill">28</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Documents</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Photos <span class="badge bg-light text-dark rounded-pill">44</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Wallet and Post Input -->
+            <div class="row mb-4">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h3 class="fw-bold">N5,280</h3>
+                        <small class="text-muted d-flex align-items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 2v1c0 1 2 1 2 2S3 6 3 7s2 1 2 2-2 1-2 2 2 1 2 2"></path>
+                            <path d="M18 22v-1c0-1 2-1 2-2s-2-1-2-2 2-1 2-2-2-1-2-2 2-1 2-2"></path>
+                            <path d="M16 8h-8"></path>
+                            <path d="M15 14h-7"></path>
+                            <rect width="16" height="16" x="4" y="4" rx="4" ry="4"></rect>
+                          </svg>
+                          Wallet history
+                        </small>
+                      </div>
+                      <div class="bg-warning bg-opacity-10 rounded-circle p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <circle cx="8" cy="21" r="1"></circle>
+                          <circle cx="19" cy="21" r="1"></circle>
+                          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mt-3 text-muted">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2v20"></path>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                      </svg>
+                      <span>16</span>
+                      <span>Points history</span>
+                    </div>
+                    <button class="btn gradient-bg text-white w-100 mt-3">Fund Wallet</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body d-flex align-items-center gap-3">
+                    <img src="https://via.placeholder.com/40" alt="Julia" class="avatar rounded-circle">
+                    <input type="text" class="form-control rounded-pill" placeholder="Share what's on your mind, Julia...">
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                          <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <line x1="16" y1="13" x2="8" y2="13"></line>
+                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                          <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                          <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                          <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connections -->
+            <div class="card mb-4">
+              <div class="card-header">
+                <h3 class="card-title">My Connections</h3>
+              </div>
+              <ul class="nav nav-pills p-2">
+                <li class="nav-item"><a class="nav-link active" href="#">STUDENTS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">SCHOOLS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">EDUCATORS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">ORGANIZATIONS</a></li>
+              </ul>
+              <div class="card-body">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="search" class="form-control" placeholder="Search">
+                </div>
+                <div class="list-group">
+                  <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Madelyn" class="avatar rounded-circle">
+                      <span>Madelyn</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-danger p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Steve" class="avatar rounded-circle">
+                      <span>Steve</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-primary p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Michael" class="avatar rounded-circle">
+                      <span>Michael</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-danger p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Maverick" class="avatar rounded-circle">
+                      <span>Maverick</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Robert" class="avatar rounded-circle">
+                      <span>Robert</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </button>
+                      <button class="btn btn-outline-light p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-3">
+                  <button class="btn btn-link">SEE ALL</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Posts -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div class="d-flex gap-3">
+                    <img src="https://via.placeholder.com/40" alt="Julia" class="avatar rounded-circle">
+                    <div>
+                      <div class="fw-medium">Julia posted an update</div>
+                      <small class="text-muted d-flex align-items-center gap-2">
+                        <span>3 years ago</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-link" data-bs-toggle="dropdown">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="video-container mt-3">
+                  <img src="https://via.placeholder.com/600x400" alt="Beach" class="img-fluid rounded">
+                  <button class="btn btn-dark rounded-circle play-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </button>
+                  <span class="badge video-duration">0:33</span>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://via.placeholder.com/24" alt="You" class="avatar rounded-circle">
+                    <img src="https://via.placeholder.com/24" alt="Jennifer" class="avatar rounded-circle">
+                    <span class="text-muted">You and Jennifer</span>
+                  </div>
+                  <span class="text-muted">2 Comments</span>
+                </div>
+                <div class="btn-group w-100 mt-3 border-top border-bottom">
+                  <button class="btn btn-outline-secondary d-flex align-items-center gap-2 justify-content-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e53935" viewBox="0 0 24 24">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    Love
+                  </button>
+                  <button class="btn btn-outline-secondary d-flex align-items-center gap-2 justify-content-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    Comment
+                  </button>
+                </div>
+                <div class="mt-3">
+                  <div class="d-flex gap-3">
+                    <img src="https://via.placeholder.com/32" alt="Jennifer" class="avatar rounded-circle">
+                    <div class="bg-light p-3 rounded">
+                      <div class="fw-medium">Jennifer</div>
+                      <p>Where is that? Looks beautiful.</p>
+                    </div>
+                  </div>
+                  <div class="d-flex gap-3 mt-2 ms-5 text-muted">
+                    <button class="btn btn-link p-0">Like</button>
+                    <button class="btn btn-link p-0">Reply</button>
+                    <span>3 years ago</span>
+                  </div>
+                  <button class="btn btn-link p-0 ms-5 mt-2">View 1 reply</button>
+                  <div class="d-flex gap-3 mt-3">
+                    <img src="https://via.placeholder.com/32" alt="Julia" class="avatar rounded-circle">
+                    <div class="flex-grow-1">
+                      <input type="text" class="form-control" placeholder="Write a comment...">
+                      <div class="d-flex justify-content-between mt-2">
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-outline-light p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                          </button>
+                          <button class="btn btn-outline-light p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M21 10H3"></path>
+                              <path d="M21 6H3"></path>
+                              <path d="M21 14H3"></path>
+                              <path d="M21 18H3"></path>
+                            </svg>
+                          </button>
+                          <button class="btn btn-outline-light p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                              <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                          </button>
+                        </div>
+                        <button class="btn btn-outline-light p-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reels -->
+            <div class="card mb-4">
+              <div class="card-header">
+                <h3>Reels just for you</h3>
+              </div>
+              <div class="card-body">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div class="col">
+                    <img src="https://via.placeholder.com/300x400" alt="CV Writing" class="img-fluid rounded">
+                  </div>
+                  <div class="col">
+                    <img src="https://via.placeholder.com/300x400" alt="Product Manager Course" class="img-fluid rounded">
+                  </div>
+                  <div class="col">
+                    <img src="https://via.placeholder.com/300x400" alt="Graduation" class="img-fluid rounded">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Another Post -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div class="d-flex gap-3">
+                    <img src="https://via.placeholder.com/40" alt="Julia" class="avatar rounded-circle">
+                    <div>
+                      <div class="fw-medium">Julia posted an update</div>
+                      <small class="text-muted d-flex align-items-center gap-2">
+                        <span>4 years ago</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="m2 12 3-3 3 3"></path>
+                          <path d="m22 12-3 3-3-3"></path>
+                        </svg>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-link" data-bs-toggle="dropdown">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-2 mt-3 border rounded p-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  <div>Reports.zip</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar -->
+          <div class="col-lg-3 border-start p-3">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">Complete Your Profile</h3>
+                <div class="d-flex justify-content-between mt-3">
+                  <span>73%</span>
+                  <span class="text-muted">Complete</span>
+                </div>
+                <div class="progress mt-2">
+                  <div class="progress-bar bg-success" style="width: 73%"></div>
+                </div>
+                <div class="mt-3">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge border rounded-circle p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>General Information</span>
+                    </div>
+                    <span class="text-muted">5/6</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge border rounded-circle p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>Work Experience</span>
+                    </div>
+                    <span class="text-muted">7/8</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge bg-success rounded-circle p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" viewBox="0 0 24 24">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>Profile Photo</span>
+                    </div>
+                    <span class="text-success">1/1</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge bg-success rounded-circle p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" viewBox="0 0 24 24">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>Cover Photo</span>
+                    </div>
+                    <span class="text-success">1/1</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">Crowdfunding Approved Students</h3>
+                <div class="mt-3">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="James Brown" class="avatar rounded-circle">
+                      <span>James Brown</span>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Julia Richardson" class="avatar rounded-circle">
+                      <div>
+                        <span>Julia Richardson</span>
+                        <div class="student-progress mt-1 rounded">
+                          <div class="student-progress-bar rounded" style="width: 66%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Daniel Smith" class="avatar rounded-circle">
+                      <div>
+                        <span>Daniel Smith</span>
+                        <div class="student-progress mt-1 rounded">
+                          <div class="student-progress-bar rounded" style="width: 83%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                          <div class="student-progress-bar rounded" style="width: 50%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Megan Daniels" class="avatar rounded-circle">
+                      <div>
+                        <span>Megan Daniels</span>
+                        <div class="student-progress mt-1 rounded">
+                          <div class="student-progress-bar rounded" style="width: 58%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Ivan Michaelson" class="avatar rounded-circle">
+                      <div>
+                        <span>Ivan Michaelson</span>
+                        <div class="student-progress mt-1 rounded">
+                          <div class="student-progress-bar rounded" style="width: 42%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="https://via.placeholder.com/32" alt="Sebastian Edward" class="avatar rounded-circle">
+                      <div>
+                        <span>Sebastian Edward</span>
+                        <div class="student-progress mt-1 rounded">
+                          <div class="student-progress-bar rounded" style="width: 33%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-light p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="text-center border-top pt-3">
+                  <button class="btn btn-link">SEE ALL</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

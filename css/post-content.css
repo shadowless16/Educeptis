@@ -1,0 +1,615 @@
+    .content-box {
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border: 1px solid #eee;
+    }
+  
+    .content-input-wrapper {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    }
+  
+    .content-input {
+    flex: 1;
+    min-height: 40px;
+    padding: 8px 0;
+    cursor: text;
+    outline: none;
+    color: #333;
+    font-size: 14px;
+    word-wrap: break-word;
+    }
+  
+    .media-preview {
+      margin-top: 10px;
+    }
+  
+    .media-preview img,
+    .media-preview video {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+  
+    .content-input:empty::before {
+    content: attr(data-placeholder);
+    color: #999;
+    }
+  
+    .placeholder {
+    color: #999;
+    }
+  
+    .content-input:focus .placeholder {
+    display: none;
+    }
+  
+    .content-actions {
+    display: flex;
+    gap: 16px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+    margin-top: 4px;
+    }
+  
+    .action-btn i {
+    font-size: 18px;
+    }
+  
+    /* Optional: Add ripple effect on button click */
+    .action-btn:active {
+    transform: scale(0.95);
+    }
+  
+    .post-box {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    height: auto;
+    }
+  
+    /* Fixed size for post media */
+    .post-content {
+      width: 100%;
+      max-height: 200px;
+      overflow: hidden;
+    }
+  
+    .photo-container img,
+    .video-container img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+    }
+  
+    .video-container video::-webkit-media-controls-enclosure {
+      overflow: hidden;
+    }
+  
+    .video-container video::-webkit-media-controls-panel {
+      width: calc(100% - 30px);
+    }
+  
+    /* Post Header Styles */
+  
+    .post-user {
+    display: flex;
+    gap: 12px;
+    }
+  
+    .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    }
+  
+    .post-info {
+    display: flex;
+    flex-direction: column;
+    }
+  
+    .user-name {
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    }
+  
+    .post-action {
+    color: #666;
+    font-size: 14px;
+    }
+  
+    .post-time {
+    color: #666;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    }
+  
+    .more-options {
+    background: none;
+    border: none;
+    color: #666;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+  
+    .more-options:hover {
+    background-color: #f8f9fa;
+    }
+  
+    /* Post Content Styles */
+  
+    .video-duration {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    }
+  
+    /* Post Engagement Styles */
+    .post-engagement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    }
+  
+  
+    .reaction-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  
+    .reaction-icons {
+      display: flex;
+      align-items: center;
+    }
+  
+    .reaction-icon {
+      font-size: 18px;
+      margin-right: -4px;
+    }
+
+  
+    /* Action Buttons Styles */
+    .action-buttons {
+      display: flex;
+      padding: 4px 16px;
+      border-bottom: 1px solid #e4e6eb;
+    }
+  
+  
+    /* View Replies Section */
+  
+    /* Post Actions Styles */
+    .post-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    }
+  
+    .action-button {
+    background: none;
+    border: none;
+    color: #666;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    }
+  
+    .action-button:hover {
+    background-color: #f8f9fa;
+    }
+  
+    .media-button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 14px;
+    }
+  
+    .media-button:hover {
+    color: #333;
+    }
+
+    .post-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    }
+    
+      /* Post Header Styles */
+      .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+      }
+    
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    
+      .header-text {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .name-action {
+        display: flex;
+        gap: 5px;
+      }
+    
+      .username {
+        font-weight: 600;
+        color: #050505;
+      }
+    
+      .action {
+        color: #65676B;
+      }
+    
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #65676B;
+        font-size: 13px;
+      }
+    
+      .dot {
+        font-size: 3px;
+        margin: 0 4px;
+      }
+    
+      .more-options {
+        border: none;
+        background: none;
+        color: #65676B;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+      }
+    
+      .more-options:hover {
+        background-color: #f0f2f5;
+      }
+    
+      /* Video Container Styles */
+      .video-container {
+        position: relative;
+        width: 100%;
+        background-color: #f0f2f5;
+        aspect-ratio: 16/9;
+        cursor: pointer;
+      }
+    
+      .video-thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+      }
+    
+      .duration {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+    
+      /* Reactions Styles */
+      .reactions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 16px;
+        border-bottom: 1px solid #e4e6eb;
+      }
+    
+      .reaction-icons {
+        display: flex;
+        align-items: center;
+      }
+    
+      .reaction-icon {
+        font-size: 18px;
+        margin-right: -4px;
+      }
+    
+      .reaction-text, .comment-count {
+        color: #65676B;
+        font-size: 14px;
+      }
+    
+      /* Action Buttons Styles */
+      .action-buttons {
+        display: flex;
+        padding: 4px 16px;
+        border-bottom: 1px solid #e4e6eb;
+      }
+    
+      .action-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px;
+        background: none;
+        border: none;
+        color: #65676B;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+    
+      .action-btn:hover {
+        background-color: #f0f2f5;
+        transform: scale(1.1);
+      }
+
+    
+      /* Comments Section Styles */
+      .comments-section {
+        padding: 16px;
+      }
+    
+      .comment {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+    
+      .comment-content {
+        flex: 1;
+      }
+    
+      .comment-bubble {
+        background-color: #f0f2f5;
+        border-radius: 18px;
+        padding: 8px 12px;
+        max-width: fit-content;
+      }
+    
+      .commenter-name {
+        font-weight: 600;
+        color: #050505;
+        margin-right: 4px;
+      }
+    
+      .comment-text {
+        color: #050505;
+        font-size: 15px;
+      }
+    
+      .comment-actions {
+        display: flex;
+        align-items: center;
+        margin-top: 4px;
+        padding-left: 12px;
+      }
+    
+      .comment-action {
+        background: none;
+        border: none;
+        color: #65676B;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0;
+      }
+    
+      .comment-action:hover {
+        text-decoration: underline;
+      }
+    
+      /* View Replies Section */
+      .view-replies {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 4px;
+        padding-left: 12px;
+      }
+    
+      .reply-arrow {
+        color: #65676B;
+        font-size: 16px;
+      }
+    
+      .view-replies-btn {
+        background: none;
+        border: none;
+        color: #65676B;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 4px 0;
+      }
+    
+      .view-replies-btn:hover {
+        text-decoration: underline;
+      }
+    
+      /* Comment Input Styles */
+      .comment-input-container {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+      }
+    
+      .comment-input-wrapper {
+        flex: 1;
+        position: relative;
+      }
+    
+      .comment-input {
+        width: 100%;
+        padding: 8px 40px 8px 12px;
+        border: none;
+        border-radius: 20px;
+        background-color: #f0f2f5;
+        font-size: 15px;
+      }
+    
+      .comment-input:focus {
+        outline: none;
+      }
+    
+      .comment-tools {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 8px;
+      }
+    
+      .tool-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4px;
+        border-radius: 50%;
+      }
+    
+      .tool-btn:hover {
+        background-color: #e4e6eb;
+      }
+      
+      /* Resume Builder Section */
+      .resume-builder {
+        margin-top: 60px;
+        text-align: center;
+      }
+      
+      .resume-builder h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .resume-builder p {
+        color: #6c757d;
+        margin-bottom: 30px;
+      }
+      
+      .feature-card {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .feature-card img {
+        height: 180px;
+        margin-bottom: 15px;
+      }
+      
+      .feature-card h3 {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      
+      .feature-card p {
+        color: #6c757d;
+        font-size: 14px;
+      }
+      
+      .benefits-list {
+        max-width: 500px;
+        margin: 0 auto 30px;
+        text-align: left;
+      }
+      
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+      
+      .check-icon {
+        background-color: #28a745;
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+      
+      .check-icon svg {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .cta-button {
+        background-color: #ffc107;
+        color: #212529;
+        font-weight: 700;
+        padding: 10px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      .cta-button:hover {
+        background-color: #e0a800;
+      }

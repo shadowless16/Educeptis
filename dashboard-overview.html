@@ -3,166 +3,1110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Networking Platform Layout</title>
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/work-experience.css">
+  <link rel="stylesheet" href="css/form-styling.css">
+  <link rel="stylesheet" href="css/post-content.css">
+  
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="nav-bar">
-      <!-- Logo -->
-      <div class="logo">
-        <img src="logo.png" alt="Logo">
-      </div>
-      <!-- Navigation Links -->
-      <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Overview</a>
-      </nav>
-      <div class="nav-icons">
-        <i class="fas fa-home" title="Home"></i>
-        <i class="fas fa-heartbeat" title="Timeline"></i>
-        <i class="fas fa-user" title="Profile"></i>
-        <i class="fas fa-comment" title="Messages"></i>
-      </div>
-      <!-- Search Bar -->
-      <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search">
-      </div>
-      <!-- Icons for Notifications and Messages -->
-      <div class="icons">
-        <i class="fa fa-inbox"></i>
-        <i class="fas fa-bell"></i>
-      </div>
-      <!-- User Profile -->
-      <div class="user-profile">
-        <span>Julien</span>
-        <img src="profile.jpg" alt="Profile">
+  <!-- Top Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light top-nav">
+    <div class="container-fluid">
+      <button class="mobile-menu-btn" id="mobileSidebarToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="#">Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#"><i class="fas fa-plus"></i></a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#"><i class="fas fa-users"></i></a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#"><i class="fas fa-comment"></i></a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+        </ul>
+        
+        <form class="d-flex mx-auto">
+          <input class="form-control me-2 search-bar py-1" type="search" placeholder="Search" aria-label="Search" style="height: 30px; width: 300px;">
+        </form>
+
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item px-2">
+            <a class="nav-link position-relative" href="#">
+              <i class="fas fa-envelope"></i>
+              <span class="notification-badge">1</span>
+            </a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link position-relative" href="#">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge">2</span>
+            </a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link position-relative" href="#">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="notification-badge">3</span>
+            </a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link d-flex align-items-center" href="#">
+              <span class="me-2">Julia</span>
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Julia" class="user-avatar">
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Grid Container -->
-  <div class="grid-container">
-    <!-- Left Sidebar -->
-    <div class="left-sidebar">
-        <!-- Navigation Menu -->
-        <div class="sidebar-content">
-          <!-- Overview (Active) -->
-          <div class="menu-item active">
-            <i class="fas fa-house"></i> <span>Overview</span>
-          </div>
-          <!-- Profile and Resume -->
-          <div class="menu-item">
-            <i class="fas fa-user"></i> <span>Profile and Resume</span>
-          </div>
-          <!-- Scholarship and Internship -->
-          <div class="menu-item">
-            <i class="fas fa-graduation-cap"></i> <span>Scholarship and Internship</span>
-          </div>
-          <!-- Course and Learning Materials -->
-          <div class="menu-item">
-            <i class="fas fa-book"></i> <span>Course and Learning Materials</span>
-          </div>
-          <!-- Jobs and Freelancing -->
-          <div class="menu-item">
-            <i class="fas fa-briefcase"></i> <span>Jobs and Freelancing</span>
-          </div>
-          <!-- Crowdfunding for Tuition -->
-          <div class="menu-item">
-            <i class="fas fa-hand-holding-usd"></i> <span>Crowdfunding for Tuition</span>
-          </div>
-          <!-- Student Loan -->
-          <div class="menu-item">
-            <i class="fas fa-money-bill"></i> <span>Student Loan</span>
-          </div>
-          <!-- Community and Networking -->
-          <div class="menu-item">
-            <i class="fas fa-users"></i> <span>Community and Networking</span>
-          </div>
-          <!-- Settings and Support -->
-          <div class="menu-item">
-            <i class="fas fa-cog"></i> <span>Settings and Support</span>
-          </div>
-          <!-- Market Place -->
-          <div class="menu-item">
-            <i class="fas fa-store"></i> <span>Market Place</span>
-          </div>
-          <!-- Chat Room -->
-          <div class="menu-item">
-            <i class="fas fa-comment"></i> <span>Chat Room</span>
-          </div>
-          <!-- Time Manager -->
-          <div class="menu-item">
-            <i class="fas fa-clock"></i> <span>Time Manager</span>
-          </div>
-          <!-- Log out (Red) -->
-          <div class="menu-item logout">
-            <i class="fas fa-arrow-right-from-bracket"></i> <span>Log out</span>
-          </div>
-        </div>
-      </div>
+  <!-- Sidebar Overlay (Mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Left Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
     
-    <!-- Toggle Button (Moved outside sidebar) -->
-    <div class="sidebar-toggle">
-        <i class="fas fa-chevron-left"></i>
-    </div>
+    <a href="#" class="sidebar-item active">
+      <i class="fas fa-th"></i>
+      <span>Overview</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-user"></i>
+      <span>Profile and Resume</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-file-alt"></i>
+      <span>Scholarship and Internship</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-layer-group"></i>
+      <span>Course and Learning Materials</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-briefcase"></i>
+      <span>Jobs and Freelancing</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-hand-holding-usd"></i>
+      <span>Crowdfunding for Tuition</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-money-bill-wave"></i>
+      <span>Student Loan</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-users"></i>
+      <span>Community and Networking</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-headset"></i>
+      <span>Settings and Support</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-store"></i>
+      <span>Market Place</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-comments"></i>
+      <span>Chat Room</span>
+    </a>
+    
+    <a href="#" class="sidebar-item">
+      <i class="fas fa-clock"></i>
+      <span>Time Manager</span>
+    </a>
+    
+    <a href="#" class="sidebar-item logout">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Log out</span>
+    </a>
+  </div>
 
-    <!-- Cover Photo and Profile Details -->
-    <div class="cover-section">
-        <div class="cover-photo" style="background-image: url('cover-placeholder.jpg');"></div>
-        <div class="profile-details">
-          <img src="profile-placeholder.png" alt="Julia Richardson" class="profile-img">
-          <div class="profile-info">
-            <h2>Julia Richardson</h2>
-            <span>Student</span>
-            <span>@julia | Joined Feb 2025</span>
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <div class="row">
+      <!-- Middle Content -->
+      <div class="col-md-9 col-lg-9">
+        <!-- Profile Info -->
+        <div class="profile-header">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cover" class="profile-cover">
+          <div class="profile-avatar-wrapper">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Profile Avatar" class="profile-avatar">
+            <div class="online-indicator"></div>
           </div>
-          <div class="social-stats">
-            <span>13 Followers</span>
-            <span>18 Following</span>
+          <div class="profile-info">
+            <div class="student-badge">Student</div>
+            <h1 class="profile-name">Julia Richardson</h1>
+            <div class="profile-info-container">
+              <div class="profile-stats">13 followers • 16 following</div>
+              <div class="profile-username">@julia • Joined Feb 2025</div>
+              <div class="profile-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-      <div class="left-sub-column">
-        <div class="fund">Fund Section</div>
-        <div class="connections">My Connections (Madelyn, Steve, etc.)</div>
-      </div>
-      <div class="right-sub-column">
-        <div class="post-option">Share what's on your mind, Julia</div>
-        <div class="posts-display">Posts Display (e.g., Beach Video Post)</div>
-      </div>
-    </div>
+        <div class="nav-container">
+          <nav class="container">
+              <ul class="main-nav">
+                  <li><a href="#" class="nav-item active" data-section="timeline" onclick="switchMainTab('timeline')">Timeline</a></li>
+                  <li><a href="#" class="nav-item" data-section="profile" onclick="switchMainTab('profile')">Profile</a></li>
+                  <li><a href="#" class="nav-item">Connections <span class="badge-count">12</span></a></li>
+                  <li><a href="#" class="nav-item">Groups <span class="badge-count">14</span></a></li>
+                  <li><a href="#" class="nav-item">Courses <span class="badge-count">26</span></a></li>
+                  <li><a href="#" class="nav-item">Documents</a></li>
+                  <li><a href="#" class="nav-item">Photos <span class="badge-count">44</span></a></li>
+              </ul>
+          </nav>
+        </div>
 
-    <!-- Right Sidebar -->
-    <div class="right-sidebar">
-      <div>Complete Your Profile - 73%</div>
-      <div>Crowdfunding Approved Students</div>
+
+        <!-- Middle Content Grid -->
+        <div class="row">
+          <!-- Timeline Specific Sections -->
+          <div class="col-md-4 col-lg-4" id="timeline-side-sections">
+            <!-- Fund Section -->
+            <div class="fund-section mobile-section" id="wallet-section">
+                <div class="fund-item">
+                  <div class="fund-icon wallet">
+                    <i class="fas fa-wallet"></i>
+                  </div>
+                  <div class="fund-details">
+                    <div class="fund-amount">N5,280</div>
+                    <div class="fund-label">Total Earnings</div>
+                  </div>
+                  <a href="#" class="history-link">
+                    <i class="far fa-eye"></i>
+                    wallet history
+                  </a>
+                </div>
+              
+                <div class="fund-item">
+                  <div class="fund-icon points">
+                    <i class="fas fa-medal"></i>
+                  </div>
+                  <div class="fund-details">
+                    <div class="fund-amount">16</div>
+                    <div class="fund-label">Total Points Earned</div>
+                  </div>
+                  <a href="#" class="history-link">
+                    <i class="far fa-eye"></i>
+                    Points history
+                  </a>
+                </div>
+              
+                <a href="#" class="fund-wallet-btn">
+                  <i class="fas fa-arrow-right"></i>
+                  Fund Wallet
+                </a>
+            </div>
+              
+            <!-- Connections Section -->
+            <div class="connections-section mobile-section" id="connections-section">
+                <h2 class="connections-title">My Connections</h2>
+                
+                <div class="connections-tabs">
+                  <button class="tab-btn active" onclick="switchTab('students')">STUDENTS</button>
+                  <button class="tab-btn" onclick="switchTab('schools')">SCHOOLS</button>
+                  <button class="tab-btn" onclick="switchTab('educators')">EDUCATORS</button>
+                  <button class="tab-btn" onclick="switchTab('organizations')">ORGANIZATIONS</button>
+                </div>
+                
+                <div class="search-container">
+                  <i class="fas fa-search search-icon"></i>
+                  <input type="text" placeholder="Search" class="search-input">
+                </div>
+                
+                <div class="connections-list" id="connectionsList">
+                  <!-- Connections will be dynamically inserted here -->
+                </div>
+                
+                <button class="see-all-btn">SEE ALL</button>
+              </div>
+          </div>
+          
+          <div class="col-md-8 col-lg-8" id="main-content-area">
+            <!-- Timeline Content -->
+            <div class="content-box mobile-section" id="timeline-content">
+                <div class="content-input-wrapper">
+                  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Julia" class="user-avatar">
+                  <div class="content-input" contenteditable="true" role="textbox" aria-label="Share what's on your mind" data-placeholder="Share what's on your mind">
+                    <span class="placeholder"></span>
+                  </div>
+                </div>
+                <button class="action-btn post-button" title="Post" onclick="postContent()">
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+                
+                <div class="content-actions">
+                  <button class="action-btn" title="Add photo">
+                    <i class="far fa-image"></i>
+                  </button>
+                  <button class="action-btn" title="Add video">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+                
+                <!-- Posts Display -->
+                <div id="feed-container"></div>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="content-box mobile-section col-12" id="profile-content" style="display: none;">
+                <div id="personal-info-section">
+                    <!-- Stepper -->
+                    <div class="stepper-wrapper">
+                        <div class="stepper">
+                            <div class="step completed">
+                                <div class="step-number"></div>
+                                <div class="step-label">Personal Information</div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-label">Work Experience</div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Education and Training</div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-label">Personal Skills</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alert -->
+                    <div class="custom-alert" role="alert">
+                        <div class="alert-icon">⚠</div>
+                        <div class="alert-content">
+                            You can complete your profile later! Just enter your first and last name, then skip the steps to explore Europass tools. Fill in your details now for a personalized experience or update them anytime.
+                        </div>
+                        <button type="button" class="close-button" aria-label="Close">
+                            Close
+                        </button>
+                    </div>
+
+                    <div class="container py-4">
+                      <div class="form-container">
+                        <!-- Form Header -->
+                        <div class="form-header">
+                          <h1>Personal Information</h1>
+                          <p>Before you start, select the language you want to use in your profile</p>
+                        </div>
+                  
+                        <form>
+                          <!-- Language and Date Format (same horizontal line) -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <label for="language" class="form-label required">Select language</label>
+                              <div class="select-wrapper">
+                                <select id="language" class="form-select">
+                                  <option>English</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="dateFormat" class="form-label required">Select date format</label>
+                              <div class="select-wrapper">
+                                <select id="dateFormat" class="form-select">
+                                  <option>23/04/2019</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                  
+                          <!-- First and Last Name (same horizontal line) -->
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                              <label for="firstName" class="form-label required">First name(s)</label>
+                              <input type="text" class="form-control" id="firstName" value="Samuel">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="lastName" class="form-label required">Last name(s)</label>
+                              <input type="text" class="form-control" id="lastName" value="Awolola">
+                            </div>
+                          </div>
+                  
+                          <!-- Identification -->
+                          <div class="mb-3">
+                            <label for="identification" class="form-label">
+                              Identification
+                              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'%3E%3C/path%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'%3E%3C/line%3E%3C/svg%3E" class="help-icon">
+                            </label>
+                            <div class="input-group">
+                              <select class="form-select" style="max-width: 80px;">
+                                <option>ID</option>
+                              </select>
+                              <input type="text" class="form-control" id="identification" value="0794*********">
+                            </div>
+                            <button type="button" class="add-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                              </svg>
+                              Add
+                            </button>
+                          </div>
+                  
+                          <!-- Work Permit -->
+                          <div class="mb-3">
+                            <label for="workPermit" class="form-label">
+                              Work permit
+                              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'%3E%3C/path%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'%3E%3C/line%3E%3C/svg%3E" class="help-icon">
+                            </label>
+                            <div class="select-wrapper">
+                              <select id="workPermit" class="form-select">
+                                <option>Select</option>
+                              </select>
+                            </div>
+                            <button type="button" class="add-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                              </svg>
+                              Add
+                            </button>
+                          </div>
+                  
+                          <!-- Date of Birth -->
+                          <div class="mb-4">
+                            <label class="form-label">Date of birth</label>
+                            <div class="row g-2">
+                              <div class="col-auto">
+                                <div class="select-wrapper">
+                                  <select class="form-select" style="width: 70px;">
+                                    <option>12</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-auto">
+                                <div class="select-wrapper">
+                                  <select class="form-select" style="width: 70px;">
+                                    <option>1</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-auto">
+                                <div class="select-wrapper">
+                                  <select class="form-select" style="width: 90px;">
+                                    <option>2005</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  
+                          <!-- Place of Birth -->
+                          <div class="mb-4">
+                            <h3 class="form-label fw-medium">Place of Birth</h3>
+                            
+                            <!-- City and Country (same horizontal line) -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="birthCity" class="form-label">City</label>
+                                <input type="text" class="form-control" id="birthCity" value="Enugu">
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="birthCountry" class="form-label">Country</label>
+                                <div class="form-select">
+                                  <div class="d-flex align-items-center">
+                                    <div class="flag-icon"></div>
+                                    Nigeria
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  
+                          <!-- Gender -->
+                          <div class="mb-3">
+                            <label for="gender" class="form-label">Gender</label>
+                            <div class="select-wrapper">
+                              <select id="gender" class="form-select">
+                                <option>Male</option>
+                              </select>
+                            </div>
+                          </div>
+                  
+                          <!-- Nationality -->
+                          <div class="mb-4">
+                            <label for="nationality" class="form-label">
+                              Nationality
+                              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'%3E%3C/path%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'%3E%3C/line%3E%3C/svg%3E" class="help-icon">
+                            </label>
+                            <div class="select-wrapper">
+                              <select id="nationality" class="form-select">
+                                <option>Nigerian</option>
+                              </select>
+                            </div>
+                            <button type="button" class="add-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                              </svg>
+                              Add
+                            </button>
+                          </div>
+                  
+                          <!-- Contact Section -->
+                          <h2 class="section-title">Contact</h2>
+                  
+                          <!-- Email -->
+                          <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" value="johnshoe@gmail.com">
+                            <button type="button" class="add-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                              </svg>
+                              Add
+                            </button>
+                          </div>
+                  
+                          <!-- Phone -->
+                          <div class="mb-4">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                              <button class="btn btn-outline-secondary d-flex align-items-center" type="button" style="min-width: 100px;">
+                                <div class="flag-icon"></div>
+                                +234
+                              </button>
+                              <input type="text" class="form-control" id="phone" value="803*******">
+                            </div>
+                            <button type="button" class="add-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                              </svg>
+                              Add
+                            </button>
+                          </div>
+                  
+                          <!-- Address Section -->
+                          <h2 class="section-title">Address</h2>
+                  
+                          <!-- Address Type -->
+                          <div class="mb-3">
+                            <label for="addressType" class="form-label">
+                              Type
+                              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'%3E%3C/path%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'%3E%3C/line%3E%3C/svg%3E" class="help-icon">
+                            </label>
+                            <div class="select-wrapper">
+                              <select id="addressType" class="form-select">
+                                <option>Home</option>
+                              </select>
+                            </div>
+                          </div>
+                  
+                          <!-- Address Lines -->
+                          <div class="mb-3">
+                            <label for="addressLine1" class="form-label">Address Line 1</label>
+                            <input type="text" class="form-control" id="addressLine1" value="Suite 1 Ikeja Lagos Island, Nigeria">
+                          </div>
+                  
+                          <div class="mb-3">
+                            <label for="addressLine2" class="form-label">Address Line 2</label>
+                            <input type="text" class="form-control" id="addressLine2" value="Suite 1 Ikeja Lagos Island, Nigeria">
+                          </div>
+                  
+                          <!-- Postal Code, City, Country -->
+                          <div class="row mb-3">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                              <label for="postalCode" class="form-label">Postal Code</label>
+                              <input type="text" class="form-control" id="postalCode" value="23******">
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                              <label for="city" class="form-label">City</label>
+                              <input type="text" class="form-control" id="city" value="Enugu">
+                            </div>
+                            <div class="col-md-4">
+                              <label for="country" class="form-label">Country</label>
+                              <div class="form-select">
+                                <div class="d-flex align-items-center">
+                                  <div class="flag-icon"></div>
+                                  Nigeria
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  
+                          <button type="button" class="add-btn mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <line x1="12" y1="5" x2="12" y2="19"></line>
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add
+                          </button>
+                  
+                          <!-- Navigation Buttons -->
+                          <div class="nav-buttons">
+                            <button type="button" class="btn exit-btn">Exit</button>
+                            <div>
+                              <button type="button" class="btn skip-btn">Skip all steps</button>
+                              <button type="button" class="btn next-btn next-button">Next</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                  
+                      <!-- AI Resume Builder Section -->
+                      <div class="resume-builder">
+                        <h2>AI Resume Builder – Craft Your Perfect Resume in Seconds</h2>
+                        <p>Generate professional, ATS-friendly resumes effortlessly with our AI-powered builder. Stand out and land your dream job today!</p>
+                  
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="feature-card">
+                              <img src="Img/Link → image.png" alt="CV template selection">
+                              <h3>Pick a CV template.</h3>
+                              <p>Choose a sleek design and layout to get started.</p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="feature-card">
+                              <img src="Img/Link → image (1).png" alt="Fill in the blanks">
+                              <h3>Fill in the blanks.</h3>
+                              <p>Type in a few words. Let our AI CV wizard fill the rest.</p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="feature-card">
+                              <img src="Img/Link → image (2).png" alt="Customize document">
+                              <h3>Customize your document.</h3>
+                              <p>Make it truly yours. Uniqueness is in a few clicks.</p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="feature-card">
+                              <img src="Img/Link → image (3).png" alt="Customize document">
+                              <h3>Customize your document.</h3>
+                              <p>Make it truly yours. Uniqueness is in a few clicks.</p>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <h2>Change Your CV. Change your life.</h2>
+                        <p>Zety CV builder. Not just an app. More like a personal career expert.<br>Your CV is underwhelming and you deserve better. Get that fresh look with our CV templates.</p>
+                  
+                        <div class="benefits-list">
+                          <div class="benefit-item">
+                            <div class="check-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                              </svg>
+                            </div>
+                            <div>Click on ready-to-use expert suggestions to build your CV in minutes</div>
+                          </div>
+                          <div class="benefit-item">
+                            <div class="check-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                              </svg>
+                            </div>
+                            <div>Blow away recruiters with sleek designs</div>
+                          </div>
+                          <div class="benefit-item">
+                            <div class="check-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                              </svg>
+                            </div>
+                            <div>Let employers see your true self—the best candidate for the job</div>
+                          </div>
+                        </div>
+                  
+                        <button class="cta-button">Create your CV now</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div id="work-experience-section" style="display: none;">
+                    <div class="container">
+                        <!-- Header -->
+                        <div class="header">
+                            <div class="title-section">
+                                <h1>Work experience</h1>
+                                <i class="bi bi-info-circle info-icon"></i>
+                            </div>
+                            <div class="header-buttons">
+                                <button class="tips-button">
+                                    <i class="bi bi-lightbulb"></i>
+                                    Tips
+                                </button>
+                                <button class="add-new-button">
+                                    <i class="bi bi-plus-lg"></i>
+                                    Add New
+                                </button>
+                            </div>
+                        </div>
+                
+                        <!-- Description -->
+                        <p class="description">
+                            Describe all your work experiences. You can include paid work, volunteering, internships, apprenticeships, freelancing and other activities.
+                        </p>
+                
+                        <!-- Existing Experience Cards -->
+                        <div class="experience-card">
+                            <div class="card-header">
+                                <div>
+                                    <h2 class="job-title">Software engineer, Intern and Instructor</h2>
+                                    <div class="company">Mr. Seyi Adegbite - Anettcom Technologies</div>
+                                    <div class="location">09/08/2024 - Current Suite 1, Grace Gas House, Omobolanle, Osogbo, Osun State, Nigeria , 230232 , Osogbo, Nigeria</div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="edit-button">
+                                        <i class="bi bi-pencil"></i>
+                                        Edit
+                                    </button>
+                                    <button class="delete-button">
+                                        <i class="bi bi-trash"></i>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="responsibilities">
+                                <li>Trained approximately 55 students in web development, focusing on essential concepts and practical application.</li>
+                                <li>Develop course materials and a structured curriculum to enhance student learning.</li>
+                                <li>Learning advanced back-end engineering using Python and frontend engineering using React (JavaScript Library).</li>
+                            </ul>
+                        </div>
+                
+                        <div class="experience-card">
+                            <div class="card-header">
+                                <div>
+                                    <h2 class="job-title">Freelancer</h2>
+                                    <div class="company">Samuel Adedamola Ayodeji - Damyoung Graphics</div>
+                                    <div class="location">07/04/2017 - Current, Osogbo, Nigeria</div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="edit-button">
+                                        <i class="bi bi-pencil"></i>
+                                        Edit
+                                    </button>
+                                    <button class="delete-button">
+                                        <i class="bi bi-trash"></i>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="responsibilities">
+                                <li>Design high-quality and visually appealing logos, flyers, banners and other marketing materials that align with the client's brand.</li>
+                                <li>Develop concepts, mock-ups and prototypes to present ideas and solicit feedback from stakeholders.</li>
+                                <li>Keeping abreast of industry trends, best practices and emerging technologies to continuously improve the quality</li>
+                            </ul>
+                        </div>
+                
+                        <!-- New Experience Form -->
+                        <div class="new-experience-form">
+                            <h2 class="mb-4">New work experience</h2>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Occupation or position held
+                                    <i class="bi bi-info-circle info-icon"></i>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Title of the occupation">
+                            </div>
+                
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Employer
+                                    <i class="bi bi-info-circle info-icon"></i>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Name of employer">
+                            </div>
+                
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-control" placeholder="e.g: Paris">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Country</label>
+                                    <select class="form-select">
+                                        <option>Select Country</option>
+                                    </select>
+                                </div>
+                            </div>
+                
+                            <div class="mb-3">
+                                <button class="btn btn-link p-0 text-primary">Address details</button>
+                            </div>
+                
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label class="form-label d-block mb-2">From</label>
+                                    <div class="date-range">
+                                        <select class="form-select" style="width: 80px">
+                                            <option>DD</option>
+                                        </select>
+                                        <select class="form-select" style="width: 80px">
+                                            <option>MM</option>
+                                        </select>
+                                        <select class="form-select" style="width: 100px">
+                                            <option>YYYY</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label class="form-label d-block mb-2">To</label>
+                                    <div class="date-range align-items-center">
+                                        <select class="form-select" style="width: 80px">
+                                            <option>DD</option>
+                                        </select>
+                                        <select class="form-select" style="width: 80px">
+                                            <option>MM</option>
+                                        </select>
+                                        <select class="form-select" style="width: 100px">
+                                            <option>YYYY</option>
+                                        </select>
+                                        <div class="form-check ms-3">
+                                            <input class="form-check-input" type="checkbox" id="ongoing">
+                                            <label class="form-check-label" for="ongoing">
+                                                Ongoing
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Main activities and responsibilities
+                                    <i class="bi bi-info-circle info-icon"></i>
+                                </label>
+                                <div class="editor-toolbar" id="editor-toolbar">
+                                    <button class="editor-button" data-command="bold" title="Bold">
+                                        <i class="bi bi-type-bold"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="italic" title="Italic">
+                                        <i class="bi bi-type-italic"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="underline" title="Underline">
+                                        <i class="bi bi-type-underline"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="subscript" title="Subscript">
+                                        <i class="bi bi-subscript"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="superscript" title="Superscript">
+                                        <i class="bi bi-superscript"></i>
+                                    </button>
+                                    
+                                    <div class="toolbar-divider"></div>
+                                    
+                                    <button class="editor-button" data-command="insertUnorderedList" title="Bullet List">
+                                        <i class="bi bi-list-ul"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="insertOrderedList" title="Numbered List">
+                                        <i class="bi bi-list-ol"></i>
+                                    </button>
+                                    
+                                    <div class="toolbar-divider"></div>
+                                    
+                                    <button class="editor-button" data-command="createLink" title="Insert Link">
+                                        <i class="bi bi-link"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="unlink" title="Remove Link">
+                                        <i class="bi bi-link-45deg"></i>
+                                    </button>
+                                    
+                                    <div class="toolbar-divider"></div>
+                                    
+                                    <button class="editor-button" data-command="undo" title="Undo">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                    <button class="editor-button" data-command="redo" title="Redo">
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                    </button>
+                                </div>
+                                <div class="editor-content" id="editor-content" contenteditable="true">
+                                    - maintenance of computers<br>
+                                    - relations with suppliers<br>
+                                    - coaching a junior Ice Hockey team (10 hours/week)
+                                </div>
+                            </div>
+                
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="moreDetails">
+                                <label class="form-check-label" for="moreDetails">
+                                    More details
+                                </label>
+                            </div>
+                        </div>
+                
+                        <!-- Navigation Buttons -->
+                        <div class="navigation-buttons">
+                            <button class="nav-button exit-button">Exit</button>
+                            <div class="d-flex gap-2">
+                                <button class="nav-button skip-button">Skip all steps</button>
+                                <button class="nav-button previous-button">Previous</button>
+                                <button class="nav-button next-button">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Profile Section -->
+            
+            
+            <!-- Mobile Crowdfunding Section -->
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="col-md-3 col-lg-3">
+        <div class="profile-box mt-3">
+          <div class="mobile-section" id="profile-section">
+            <div class="profile-completion">
+              <h3>Complete Your Profile</h3>
+              <canvas id="progressCanvas" width="200" height="100"></canvas>
+              <h2 id="progress-text">0%</h2>
+            
+              <ul class="completion-checklist">
+                <li id="general-info">❌ General Information <span id="gi-count">0/6</span></li>
+                <li id="work-exp">❌ Work Experience <span id="we-count">0/3</span></li>
+                <li id="profile-photo">❌ Profile Photo <span id="pp-count">0/1</span></li>
+                <li id="cover-photo">❌ Cover Photo <span id="cp-count">0/1</span></li>
+              </ul>
+            
+              <div class="completion-actions">
+                <button onclick="completeField('generalInfo')">+ General Info</button>
+                <button onclick="completeField('workExp')">+ Work Exp</button>
+                <button onclick="completeField('profilePhoto')">Upload Profile Photo</button>
+                <button onclick="completeField('coverPhoto')">Upload Cover Photo</button>
+              </div>
+            </div>
+          </div>         
+        </div>
+
+        <div class="mobile-section" id="crowdfunding-section">
+          <div class="crowd-funding">
+            <h3 class="title">Crowdfunding Approved Students</h3>
+            <div class="students-list" id="mobileStudentsList">
+              <!-- Students will be dynamically inserted here -->
+            </div>
+            <button class="see-all-btn">SEE ALL</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <div>Reels Just for You - Become a Product Manager</div>
+  <!-- Mobile Bottom Navigation -->
+  <div class="mobile-bottom-nav">
+    <a href="#" class="mobile-nav-item active" data-tab="timeline" onclick="switchMainTab('timeline')">
+      <i class="fas fa-home"></i>
+    </a>
+    <a href="#" class="mobile-nav-item" data-tab="connections">
+      <i class="fas fa-users"></i>
+    </a>
+    <a href="#" class="mobile-nav-item center">
+      <i class="fas fa-th-large"></i>
+    </a>
+    <a href="#" class="mobile-nav-item" data-tab="wallet">
+      <i class="fas fa-wallet"></i>
+    </a>
+    <a href="#" class="mobile-nav-item" data-tab="profile" onclick="switchMainTab('profile')">
+      <i class="fas fa-user"></i>
+    </a>
   </div>
 
-  <!-- JavaScript for Toggling Sidebar -->
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="userdata.js"></script>
+  <script src="script.js"></script>
+  <script src="mobile.js"></script>
   <script>
-    const sidebar = document.querySelector('.left-sidebar');
-    const mainContent = document.querySelector('.main-content');
-    const toggleBtn = document.querySelector('.sidebar-toggle');
-    const toggleIcon = toggleBtn.querySelector('i');
+    function switchMainTab(sectionName) {
+      // Hide all main sections
+      const sections = ['timeline-content', 'profile-content'];
+      sections.forEach(section => {
+        document.getElementById(section).style.display = 'none';
+      });
 
-    toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        toggleIcon.classList.toggle('fa-chevron-left');
-        toggleIcon.classList.toggle('fa-chevron-right');
+      // Show/hide timeline side sections
+      const timelineSections = document.getElementById('timeline-side-sections');
+      const mainContentArea = document.getElementById('main-content-area');
+      
+      if (sectionName === 'profile') {
+        timelineSections.style.display = 'none';
+        mainContentArea.className = 'col-12';
+      } else {
+        timelineSections.style.display = 'block';
+        mainContentArea.className = 'col-md-8 col-lg-8';
+      }
+
+      // Show selected section
+      document.getElementById(sectionName + '-content').style.display = 'block';
+
+      // Update active states
+      document.querySelectorAll('.nav-item').forEach(item => {
+        if (item.getAttribute('data-section') === sectionName) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Update mobile nav if exists
+      document.querySelectorAll('.mobile-nav-item').forEach(item => {
+        if (item.getAttribute('data-tab') === sectionName) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // Initialize timeline tab as active
+    switchMainTab('timeline');
+
+    function completeField(field) {
+      // Add your logic to complete the field and update the progress bar
+    }
+
+    function switchProfileSection(section) {
+        const sections = ['personal-info-section', 'work-experience-section'];
+        sections.forEach(s => {
+            document.getElementById(s).style.display = 'none';
+        });
+        document.getElementById(section).style.display = 'block';
+    }
+
+    // Add event listeners for navigation buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const nextButtons = document.querySelectorAll('.next-button');
+        const prevButtons = document.querySelectorAll('.previous-button');
+
+        nextButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchProfileSection('work-experience-section');
+            });
+        });
+
+        prevButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchProfileSection('personal-info-section');
+            });
+        });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const toolbar = document.getElementById('editor-toolbar');
+      const editor = document.getElementById('editor-content');
+      
+      // Focus the editor
+      editor.focus();
+      
+      // Execute command when toolbar button is clicked
+      toolbar.addEventListener('click', function(e) {
+          const target = e.target.closest('.editor-button');
+          if (!target) return;
+          
+          e.preventDefault();
+          
+          const command = target.dataset.command;
+          
+          if (command === 'createLink') {
+              const url = prompt('Enter the link URL:');
+              if (url) {
+                  document.execCommand(command, false, url);
+              }
+          } else {
+              document.execCommand(command, false, null);
+              
+              // Toggle active state for style buttons
+              if (['bold', 'italic', 'underline', 'subscript', 'superscript'].includes(command)) {
+                  target.classList.toggle('active');
+              }
+          }
+          
+          // Update button states based on current selection
+          updateButtonStates();
+      });
+      
+      // Update button states based on current selection
+      function updateButtonStates() {
+          const buttons = toolbar.querySelectorAll('.editor-button');
+          
+          buttons.forEach(button => {
+              const command = button.dataset.command;
+              
+              if (['bold', 'italic', 'underline', 'subscript', 'superscript'].includes(command)) {
+                  if (document.queryCommandState(command)) {
+                      button.classList.add('active');
+                  } else {
+                      button.classList.remove('active');
+                  }
+              }
+          });
+      }
+      
+      // Update button states when selection changes
+      editor.addEventListener('mouseup', updateButtonStates);
+      editor.addEventListener('keyup', updateButtonStates);
+      
+      // Initialize button states
+      updateButtonStates();
+  });
+
+  function postContent() {
+    const contentInput = document.querySelector('.content-input');
+    const content = contentInput.innerText.trim();
+    if (content) {
+      // Logic to post the content
+      console.log('Posting content:', content);
+      contentInput.innerText = ''; // Clear the input after posting
+    } else {
+      console.log('Content is empty');
+    }
+  }
   </script>
 </body>
 </html>

@@ -1,0 +1,120 @@
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .required::after {
+    content: "*";
+    color: #dc3545;
+    margin-left: 3px;
+  }
+  
+  .help-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  .select-wrapper {
+    position: relative;
+  }
+  
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px !important;
+  }
+  
+  .add-btn {
+    color: #0d6efd;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  
+  .add-btn svg {
+    margin-right: 5px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .form-header {
+    margin-bottom: 25px;
+  }
+  
+  .form-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .form-header p {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .flag-icon {
+    width: 20px;
+    height: 12px;
+    background-color: #008751;
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  
+  .flag-icon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 33%;
+    width: 4px;
+    background-color: white;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .skip-btn {
+    color: #0d6efd;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  
+  .exit-btn {
+    color: #6c757d;
+    font-weight: 500;
+  }
+  
+  .next-btn {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 500;
+    padding: 6px 16px;
+  }
