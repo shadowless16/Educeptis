@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="General.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="mobile-dropdown">
+          <button id="dropdown-toggle" class="dropdown-button">
+            <span id="active-tab-text">General</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div id="dropdown-menu" class="dropdown-menu hidden">
+            <!-- Tabs will be populated by JavaScript -->
+          </div>
+        </div>
+        <div class="sidebar-tabs">
+          <!-- Tabs will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="form-container">
+          <!-- User Field -->
+          <div class="form-group">
+            <label class="form-label">
+              User <span class="required">*</span>
+            </label>
+            <div class="input-group">
+              <div class="dropdown-container">
+                <button class="user-dropdown">
+                  <span id="username">wisteen67</span>
+                  <span>▼</span>
+                </button>
+              </div>
+              <div class="button-group">
+                <button class="icon-button edit-button">
+                  <i data-lucide="edit" class="icon"></i>
+                </button>
+                <button class="icon-button add-button">
+                  <i data-lucide="plus" class="icon"></i>
+                </button>
+                <button class="icon-button view-button">
+                  <i data-lucide="eye" class="icon"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio Field -->
+          <div class="form-group">
+            <label class="form-label">Bio</label>
+            <div class="textarea-container">
+              <textarea
+                class="form-textarea"
+                placeholder="Enter your bio"
+              ></textarea>
+              <div class="textarea-actions">
+                <button class="icon-button edit-button">
+                  <i data-lucide="edit" class="icon-small"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label class="form-label">Phone number</label>
+            <input
+              type="tel"
+              class="form-input"
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="form-group">
+            <label class="form-label">Date of birth</label>
+            <div class="date-container">
+              <input type="date" class="form-input" />
+              <div class="date-actions">
+                <button class="today-button">
+                  Today <i data-lucide="calendar" class="icon-small"></i>
+                </button>
+                <span class="time-note"
+                  >Note: You are 1 hour ahead of server time.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label class="form-label">Gender</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your gender"
+            />
+          </div>
+
+          <!-- Address -->
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your address"
+            />
+          </div>
+
+          <!-- State -->
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your state"
+            />
+          </div>
+
+          <!-- Country -->
+          <div class="form-group">
+            <label class="form-label">Country</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your country"
+            />
+          </div>
+
+          <!-- Postal Code -->
+          <div class="form-group">
+            <label class="form-label">PostalCode</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your postal code"
+            />
+          </div>
+
+          <!-- Nationality -->
+          <div class="form-group">
+            <label class="form-label">Nationality</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your nationality"
+            />
+          </div>
+
+          <!-- Profile Photo -->
+          <div class="form-group">
+            <label class="form-label">Profile photo</label>
+            <input type="file" class="form-input" />
+          </div>
+
+          <!-- Matric Number -->
+          <div class="form-group">
+            <label class="form-label">Matric number</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your matric number"
+            />
+          </div>
+
+          <!-- Institution -->
+          <div class="form-group">
+            <label class="form-label">Institution</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your institution"
+            />
+          </div>
+
+          <!-- Verification Checkboxes -->
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="verified" class="checkbox" />
+              <label for="verified" class="checkbox-label">Is verified</label>
+            </div>
+
+            <div class="checkbox-item">
+              <input type="checkbox" id="confirmed" class="checkbox" />
+              <label for="confirmed" class="checkbox-label"
+                >Profile confirmed</label
+              >
+            </div>
+          </div>
+
+          <!-- Twitter -->
+          <div class="form-group">
+            <label class="form-label">Twitter</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your Twitter handle"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Facebook</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your Facebook handle"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instagram</label>
+            <input
+              type="text"
+              class="form-input" 
+              placeholder="Enter your Instagram handle"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">LinkedIn</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your LinkedIn handle" 
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">GitHub</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your GitHub handle"
+            />
+          </div>
+
+          <!-- Interests -->
+          <div class="form-group">
+            <label class="form-label">Interests</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your interests"
+            />
+          </div>
+
+          <!-- Preferences -->
+          <div class="form-group">
+            <label class="form-label">Preferences <span class="required">*</span></label>
+            <textarea class="form-textarea" placeholder="Enter your preferences"></textarea>
+          </div>
+
+          <!-- Integration Status -->
+          <div class="form-group">
+            <label class="form-label">Integration status <span class="required">*</span></label>
+            <textarea class="form-textarea" placeholder="Enter your integration status"></textarea>
+          </div>
+
+          <!-- Selected Template -->
+          <div class="form-group">
+            <label class="form-label">Selected template</label>
+            <select class="form-input">
+              <option value="">--------</option>
+              <!-- Add options here -->
+            </select>
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select class="form-input">
+              <option value="student">student</option>
+              <!-- Add more options if needed -->
+            </select>
+          </div>
+
+          <!-- Save Button -->
+          <div class="form-actions">
+            <button class="save-button">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Lucide icons
+        const lucide = window.lucide; // Declare lucide variable
+        lucide.createIcons();
+
+        // Tabs data
+        const tabs = [
+          "General",
+          "Specializations",
+          "Social links",
+          "Academic informations",
+          "Skills",
+          "Certifications",
+          "Work experiences",
+          "Research projects",
+          "Group projects",
+          "Extracurricular activities",
+          "Personal statements",
+          "Career goals",
+          "Motivation statements",
+          "Scholarships",
+          "Scholarship preferences",
+          "Financial aid status",
+          "Portfolios",
+          "Video resumes",
+          "Recommendation letters",
+          "Social impacts",
+          "Availability preferences",
+          "Profile analytics",
+          "Languages",
+        ];
+
+        let activeTab = "General";
+
+        // Populate sidebar tabs
+        const sidebarTabsContainer = document.querySelector(".sidebar-tabs");
+        tabs.forEach((tab) => {
+          const button = document.createElement("button");
+          button.className = `sidebar-tab ${tab === activeTab ? "active" : ""}`;
+          button.textContent = tab;
+          button.addEventListener("click", () => {
+            setActiveTab(tab);
+          });
+          sidebarTabsContainer.appendChild(button);
+        });
+
+        // Populate dropdown menu
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        tabs.forEach((tab) => {
+          const button = document.createElement("button");
+          button.className = `dropdown-item ${
+            tab === activeTab ? "active" : ""
+          }`;
+          button.textContent = tab;
+          button.addEventListener("click", () => {
+            setActiveTab(tab);
+            toggleDropdown(false);
+          });
+          dropdownMenu.appendChild(button);
+        });
+
+        // Dropdown toggle functionality
+        const dropdownToggle = document.getElementById("dropdown-toggle");
+        const dropdownArrow = dropdownToggle.querySelector(".dropdown-arrow");
+
+        dropdownToggle.addEventListener("click", () => {
+          const isOpen = !dropdownMenu.classList.contains("hidden");
+          toggleDropdown(!isOpen);
+        });
+
+        function toggleDropdown(open) {
+          if (open) {
+            dropdownMenu.classList.remove("hidden");
+            dropdownArrow.classList.add("open");
+          } else {
+            dropdownMenu.classList.add("hidden");
+            dropdownArrow.classList.remove("open");
+          }
+        }
+
+        // Set active tab
+        function setActiveTab(tab) {
+          activeTab = tab;
+
+          // Update sidebar tabs
+          document.querySelectorAll(".sidebar-tab").forEach((el) => {
+            el.classList.toggle("active", el.textContent === tab);
+          });
+
+          // Update dropdown items
+          document.querySelectorAll(".dropdown-item").forEach((el) => {
+            el.classList.toggle("active", el.textContent === tab);
+          });
+
+          // Update dropdown button text
+          document.getElementById("active-tab-text").textContent = tab;
+        }
+
+        // Today button functionality
+        const todayButton = document.querySelector(".today-button");
+        todayButton.addEventListener("click", () => {
+          const today = new Date();
+          const year = today.getFullYear();
+          const month = String(today.getMonth() + 1).padStart(2, "0");
+          const day = String(today.getDate()).padStart(2, "0");
+          const formattedDate = `${year}-${month}-${day}`;
+
+          const dateInput = document.querySelector('input[type="date"]');
+          dateInput.value = formattedDate;
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+          const isClickInside =
+            dropdownToggle.contains(event.target) ||
+            dropdownMenu.contains(event.target);
+          if (!isClickInside && !dropdownMenu.classList.contains("hidden")) {
+            toggleDropdown(false);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

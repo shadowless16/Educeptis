@@ -17,9 +17,6 @@
   <!-- Top Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light top-nav">
     <div class="container-fluid">
-      <button class="mobile-menu-btn" id="mobileSidebarToggle">
-        <i class="fas fa-bars"></i>
-      </button>
       <a class="navbar-brand" href="#">Dashboard</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -83,7 +80,7 @@
   <!-- Left Sidebar -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <button class="sidebar-toggle" id="sidebarToggle">
+      <button class="btn btn-toggle" onclick="toggleSidebar()"></button>
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -153,6 +150,25 @@
       <span>Log out</span>
     </a>
   </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+    }
+  </script>
+
+  <style>
+    .sidebar.collapsed {
+      width: 60px;
+    }
+    .sidebar.collapsed .sidebar-item span {
+      display: none;
+    }
+    .sidebar.collapsed .sidebar-item i {
+      margin-right: 0;
+    }
+  </style>
 
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
