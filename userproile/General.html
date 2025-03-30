@@ -1,415 +1,1618 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Profile</title>
-    <link rel="stylesheet" href="General.css" />
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-  </head>
-  <body>
-    <div class="container">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Management</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row min-vh-100">
       <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="mobile-dropdown">
-          <button id="dropdown-toggle" class="dropdown-button">
-            <span id="active-tab-text">General</span>
-            <span class="dropdown-arrow">▼</span>
-          </button>
-          <div id="dropdown-menu" class="dropdown-menu hidden">
-            <!-- Tabs will be populated by JavaScript -->
-          </div>
+      <div class="col-md-3 col-lg-2 sidebar bg-white border-end p-0">
+        <!-- Mobile tab selector -->
+        <div class="d-md-none sticky-top bg-white border-bottom p-2">
+          <select class="form-select" id="mobile-tab-selector">
+            <option value="general">General</option>
+            <option value="specializations">Specializations</option>
+            <option value="social-links">Social links</option>
+            <option value="academic-informations">Academic informations</option>
+            <option value="skills">Skills</option>
+            <option value="certifications">Certifications</option>
+            <option value="work-experiences">Work experiences</option>
+            <option value="research-projects">Research projects</option>
+            <option value="group-projects">Group projects</option>
+            <option value="extracurricular-activities">Extracurricular activities</option>
+            <option value="personal-statements">Personal statements</option>
+            <option value="career-goals">Career goals</option>
+            <option value="motivation-statements">Motivation statements</option>
+            <option value="scholarships">Scholarships</option>
+            <option value="scholarship-preferences">Scholarship preferences</option>
+            <option value="financial-aid-status">Financial aid status</option>
+            <option value="portfolios">Portfolios</option>
+            <option value="video-resumes">Video resumes</option>
+            <option value="recommendation-letters">Recommendation letters</option>
+            <option value="social-impacts">Social impacts</option>
+            <option value="availability-preferences">Availability preferences</option>
+            <option value="profile-analytics">Profile analytics</option>
+            <option value="languages">Languages</option>
+          </select>
         </div>
-        <div class="sidebar-tabs">
-          <!-- Tabs will be populated by JavaScript -->
+        
+        <!-- Desktop sidebar navigation -->
+        <div class="d-none d-md-block p-2">
+          <div class="list-group list-group-flush" id="sidebar-tabs">
+            <button class="list-group-item list-group-item-action active" data-tab="general">General</button>
+            <button class="list-group-item list-group-item-action" data-tab="specializations">Specializations</button>
+            <button class="list-group-item list-group-item-action" data-tab="social-links">Social links</button>
+            <button class="list-group-item list-group-item-action" data-tab="academic-informations">Academic informations</button>
+            <button class="list-group-item list-group-item-action" data-tab="skills">Skills</button>
+            <button class="list-group-item list-group-item-action" data-tab="certifications">Certifications</button>
+            <button class="list-group-item list-group-item-action" data-tab="work-experiences">Work experiences</button>
+            <button class="list-group-item list-group-item-action" data-tab="research-projects">Research projects</button>
+            <button class="list-group-item list-group-item-action" data-tab="group-projects">Group projects</button>
+            <button class="list-group-item list-group-item-action" data-tab="extracurricular-activities">Extracurricular activities</button>
+            <button class="list-group-item list-group-item-action" data-tab="personal-statements">Personal statements</button>
+            <button class="list-group-item list-group-item-action" data-tab="career-goals">Career goals</button>
+            <button class="list-group-item list-group-item-action" data-tab="motivation-statements">Motivation statements</button>
+            <button class="list-group-item list-group-item-action" data-tab="scholarships">Scholarships</button>
+            <button class="list-group-item list-group-item-action" data-tab="scholarship-preferences">Scholarship preferences</button>
+            <button class="list-group-item list-group-item-action" data-tab="financial-aid-status">Financial aid status</button>
+            <button class="list-group-item list-group-item-action" data-tab="portfolios">Portfolios</button>
+            <button class="list-group-item list-group-item-action" data-tab="video-resumes">Video resumes</button>
+            <button class="list-group-item list-group-item-action" data-tab="recommendation-letters">Recommendation letters</button>
+            <button class="list-group-item list-group-item-action" data-tab="social-impacts">Social impacts</button>
+            <button class="list-group-item list-group-item-action" data-tab="availability-preferences">Availability preferences</button>
+            <button class="list-group-item list-group-item-action" data-tab="profile-analytics">Profile analytics</button>
+            <button class="list-group-item list-group-item-action" data-tab="languages">Languages</button>
+          </div>
         </div>
       </div>
 
       <!-- Main Content -->
-      <div class="main-content">
-        <div class="form-container">
-          <!-- User Field -->
-          <div class="form-group">
-            <label class="form-label">
-              User <span class="required">*</span>
-            </label>
-            <div class="input-group">
-              <div class="dropdown-container">
-                <button class="user-dropdown">
-                  <span id="username">wisteen67</span>
-                  <span>▼</span>
-                </button>
+      <div class="col-md-9 col-lg-10 content-area bg-light p-4">
+        <div class="tab-content">
+          <!-- General Tab -->
+          <div class="tab-pane fade show active" id="general">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="user" class="form-label">User <span class="text-danger">*</span></label>
+                  <div class="d-flex flex-column flex-sm-row gap-2">
+                    <select class="form-select" id="user">
+                      <option value="username1">username1</option>
+                      <option value="username2">username2</option>
+                    </select>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-outline-secondary btn-sm">⭐</button>
+                      <button class="btn btn-outline-secondary btn-sm">🔍</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="button-group">
-                <button class="icon-button edit-button">
-                  <i data-lucide="edit" class="icon"></i>
-                </button>
-                <button class="icon-button add-button">
-                  <i data-lucide="plus" class="icon"></i>
-                </button>
-                <button class="icon-button view-button">
-                  <i data-lucide="eye" class="icon"></i>
-                </button>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="bio" class="form-label">Bio</label>
+                  <textarea class="form-control" id="bio" rows="4" placeholder="Write about yourself..."></textarea>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone number</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="dob" class="form-label">Date of birth</label>
+                  <div class="d-flex flex-column flex-sm-row gap-2">
+                    <input type="date" class="form-control" id="dob">
+                    <button class="btn btn-outline-secondary">Today</button>
+                  </div>
+                  <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="gender" class="form-label">Gender</label>
+                  <input type="text" class="form-control" id="gender" placeholder="Enter your gender">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="state" class="form-label">State</label>
+                  <input type="text" class="form-control" id="state" placeholder="Enter your state">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="country" class="form-label">Country</label>
+                  <input type="text" class="form-control" id="country" placeholder="Enter your country">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="postal" class="form-label">Postal/Zip Code</label>
+                  <input type="text" class="form-control" id="postal" placeholder="Enter your postal code">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="nationality" class="form-label">Nationality</label>
+                  <input type="text" class="form-control" id="nationality" placeholder="Enter your nationality">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label class="form-label">Profile photo</label>
+                  <div>
+                    <p class="text-muted">Currently: profile_photos/_MG_0119.png</p>
+                    <div class="d-flex align-items-center gap-2">
+                      <input type="file" class="form-control" id="profile-photo">
+                    </div>
+                    <button class="btn btn-link p-0 mt-2">Clear</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="matric" class="form-label">Matric number</label>
+                  <input type="text" class="form-control" id="matric" placeholder="Enter your matric number">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="institution" class="form-label">Institution</label>
+                  <input type="text" class="form-control" id="institution" placeholder="Enter your institution">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="verified">
+                  <label class="form-check-label" for="verified">Is verified</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="confirmed">
+                  <label class="form-check-label" for="confirmed">Profile confirmed</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="friends" class="form-label">Friends</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="friends" placeholder="Enter friend's name">
+                    <button class="btn btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                  </div>
+                  <small class="text-muted">Write down "Contact1", "Contact2", or a file, to make it more than one.</small>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="twitter" class="form-label">Twitter</label>
+                  <input type="text" class="form-control" id="twitter" placeholder="Enter your Twitter handle">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="facebook" class="form-label">Facebook</label>
+                  <input type="text" class="form-control" id="facebook" placeholder="Enter your Facebook profile">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="instagram" class="form-label">Instagram</label>
+                  <input type="text" class="form-control" id="instagram" placeholder="Enter your Instagram handle">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="linkedin" class="form-label">LinkedIn</label>
+                  <input type="text" class="form-control" id="linkedin" placeholder="Enter your LinkedIn profile">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="github" class="form-label">GitHub</label>
+                  <input type="text" class="form-control" id="github" placeholder="Enter your GitHub username">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="interests" class="form-label">Interests</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="interests" placeholder="Enter your interests">
+                    <button class="btn btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                  </div>
+                  <small class="text-muted">Write down "Contact1", "Contact2", or a file, to make it more than one.</small>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="preferences" class="form-label">Preferences</label>
+                  <input type="text" class="form-control" id="preferences" placeholder="Enter your preferences">
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Bio Field -->
-          <div class="form-group">
-            <label class="form-label">Bio</label>
-            <div class="textarea-container">
-              <textarea
-                class="form-textarea"
-                placeholder="Enter your bio"
-              ></textarea>
-              <div class="textarea-actions">
-                <button class="icon-button edit-button">
-                  <i data-lucide="edit" class="icon-small"></i>
-                </button>
+          <!-- Specializations Tab -->
+          <div class="tab-pane fade" id="specializations">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <!-- Existing specializations -->
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Specialty name</label>
+                      <select class="form-select">
+                        <option value="accountant">Accountant</option>
+                        <option value="developer">Developer</option>
+                        <option value="designer">Designer</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="delete-mobile-1">
+                      <label class="form-check-label" for="delete-mobile-1">Delete?</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- New specialization -->
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Specialty name</label>
+                      </div>
+                      <select class="form-select">
+                        <option value="accountant">Accountant</option>
+                        <option value="developer">Developer</option>
+                        <option value="designer">Designer</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Specialty name</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Existing specializations -->
+                    <tr>
+                      <td>
+                        <select class="form-select">
+                          <option value="accountant">Accountant</option>
+                          <option value="developer">Developer</option>
+                          <option value="designer">Designer</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="delete-1">
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- New specialization -->
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                          <select class="form-select">
+                            <option value="accountant">Accountant</option>
+                            <option value="developer">Developer</option>
+                            <option value="designer">Designer</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Specialization</button>
               </div>
             </div>
           </div>
 
-          <!-- Phone Number -->
-          <div class="form-group">
-            <label class="form-label">Phone number</label>
-            <input
-              type="tel"
-              class="form-input"
-              placeholder="Enter your phone number"
-            />
-          </div>
+          <!-- Social Links Tab -->
+          <div class="tab-pane fade" id="social-links">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Platform name</label>
+                      </div>
+                      <select class="form-select">
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="github">GitHub</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">URL</label>
+                      <input type="url" class="form-control" placeholder="Enter URL">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <!-- Date of Birth -->
-          <div class="form-group">
-            <label class="form-label">Date of birth</label>
-            <div class="date-container">
-              <input type="date" class="form-input" />
-              <div class="date-actions">
-                <button class="today-button">
-                  Today <i data-lucide="calendar" class="icon-small"></i>
-                </button>
-                <span class="time-note"
-                  >Note: You are 1 hour ahead of server time.</span
-                >
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Platform name</th>
+                      <th>URL</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                          <select class="form-select">
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="twitter">Twitter</option>
+                            <option value="github">GitHub</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <input type="url" class="form-control" placeholder="Enter URL">
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Social link</button>
               </div>
             </div>
           </div>
 
-          <!-- Gender -->
-          <div class="form-group">
-            <label class="form-label">Gender</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your gender"
-            />
-          </div>
+          <!-- Academic Informations Tab -->
+          <div class="tab-pane fade" id="academic-informations">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Educational institution</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Institution name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Degree type</label>
+                      <select class="form-select">
+                        <option value="bachelor">Bachelor's</option>
+                        <option value="master">Master's</option>
+                        <option value="phd">PhD</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Field of study</label>
+                      <input type="text" class="form-control" placeholder="Field of study">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">GPA</label>
+                      <input type="text" class="form-control" placeholder="GPA">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Academic achievements</label>
+                      <div class="border rounded p-2 bg-white">
+                        <div class="btn-toolbar mb-2">
+                          <div class="btn-group me-2">
+                            <button class="btn btn-sm btn-outline-secondary">B</button>
+                            <button class="btn btn-sm btn-outline-secondary">I</button>
+                            <button class="btn btn-sm btn-outline-secondary">U</button>
+                          </div>
+                        </div>
+                        <textarea class="form-control" rows="4" placeholder="Academic achievements"></textarea>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Expected graduation date</label>
+                      <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="date" class="form-control">
+                        <button class="btn btn-outline-secondary">Today</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <!-- Address -->
-          <div class="form-group">
-            <label class="form-label">Address</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your address"
-            />
-          </div>
-
-          <!-- State -->
-          <div class="form-group">
-            <label class="form-label">State</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your state"
-            />
-          </div>
-
-          <!-- Country -->
-          <div class="form-group">
-            <label class="form-label">Country</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your country"
-            />
-          </div>
-
-          <!-- Postal Code -->
-          <div class="form-group">
-            <label class="form-label">PostalCode</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your postal code"
-            />
-          </div>
-
-          <!-- Nationality -->
-          <div class="form-group">
-            <label class="form-label">Nationality</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your nationality"
-            />
-          </div>
-
-          <!-- Profile Photo -->
-          <div class="form-group">
-            <label class="form-label">Profile photo</label>
-            <input type="file" class="form-input" />
-          </div>
-
-          <!-- Matric Number -->
-          <div class="form-group">
-            <label class="form-label">Matric number</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your matric number"
-            />
-          </div>
-
-          <!-- Institution -->
-          <div class="form-group">
-            <label class="form-label">Institution</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your institution"
-            />
-          </div>
-
-          <!-- Verification Checkboxes -->
-          <div class="checkbox-group">
-            <div class="checkbox-item">
-              <input type="checkbox" id="verified" class="checkbox" />
-              <label for="verified" class="checkbox-label">Is verified</label>
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Educational institution</th>
+                      <th>Degree type</th>
+                      <th>Field of study</th>
+                      <th>GPA</th>
+                      <th>Academic achievements</th>
+                      <th>Expected graduation date</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                          <input type="text" class="form-control" placeholder="Institution name">
+                        </div>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="bachelor">Bachelor's</option>
+                          <option value="master">Master's</option>
+                          <option value="phd">PhD</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" placeholder="Field of study">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" placeholder="GPA">
+                      </td>
+                      <td>
+                        <div class="border rounded p-2 bg-white">
+                          <div class="btn-toolbar mb-2">
+                            <div class="btn-group me-2">
+                              <button class="btn btn-sm btn-outline-secondary">B</button>
+                              <button class="btn btn-sm btn-outline-secondary">I</button>
+                              <button class="btn btn-sm btn-outline-secondary">U</button>
+                            </div>
+                          </div>
+                          <textarea class="form-control" rows="4" placeholder="Academic achievements"></textarea>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <input type="date" class="form-control">
+                          <button class="btn btn-outline-secondary">Today</button>
+                        </div>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Academic information</button>
+              </div>
             </div>
+          </div>
 
-            <div class="checkbox-item">
-              <input type="checkbox" id="confirmed" class="checkbox" />
-              <label for="confirmed" class="checkbox-label"
-                >Profile confirmed</label
-              >
+          <!-- Skills Tab -->
+          <div class="tab-pane fade" id="skills">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Name</label>
+                      </div>
+                      <select class="form-select">
+                        <option value="javascript">JavaScript</option>
+                        <option value="react">React</option>
+                        <option value="nextjs">Next.js</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Proficiency level</label>
+                      <select class="form-select">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Skill type</label>
+                      <select class="form-select">
+                        <option value="technical">Technical</option>
+                        <option value="soft">Soft</option>
+                        <option value="language">Language</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Proficiency level</th>
+                      <th>Skill type</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                          <select class="form-select">
+                            <option value="javascript">JavaScript</option>
+                            <option value="react">React</option>
+                            <option value="nextjs">Next.js</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="beginner">Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advanced">Advanced</option>
+                          <option value="expert">Expert</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="technical">Technical</option>
+                          <option value="soft">Soft</option>
+                          <option value="language">Language</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Skill</button>
+              </div>
             </div>
           </div>
 
-          <!-- Twitter -->
-          <div class="form-group">
-            <label class="form-label">Twitter</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your Twitter handle"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Facebook</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your Facebook handle"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Instagram</label>
-            <input
-              type="text"
-              class="form-input" 
-              placeholder="Enter your Instagram handle"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label">LinkedIn</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your LinkedIn handle" 
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label">GitHub</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your GitHub handle"
-            />
+          <!-- Certifications Tab -->
+          <div class="tab-pane fade" id="certifications">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Name</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Certification name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Issuing organization</label>
+                      <input type="text" class="form-control" placeholder="Issuing organization">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Date obtained</label>
+                      <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="date" class="form-control" value="2023-03-30">
+                        <button class="btn btn-outline-secondary">Today</button>
+                      </div>
+                      <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Expiration date</label>
+                      <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="date" class="form-control">
+                        <button class="btn btn-outline-secondary">Today</button>
+                      </div>
+                      <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Certification image</label>
+                      <input type="file" class="form-control">
+                      <small class="text-muted">No file chosen</small>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Issuing organization</th>
+                      <th>Date obtained</th>
+                      <th>Expiration date</th>
+                      <th>Certification image</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                          <input type="text" class="form-control" placeholder="Certification name">
+                        </div>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" placeholder="Issuing organization">
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <input type="date" class="form-control" value="2023-03-30">
+                          <button class="btn btn-outline-secondary">Today</button>
+                        </div>
+                        <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <input type="date" class="form-control">
+                          <button class="btn btn-outline-secondary">Today</button>
+                        </div>
+                        <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
+                      </td>
+                      <td>
+                        <input type="file" class="form-control">
+                        <small class="text-muted">No file chosen</small>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Certification</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Interests -->
-          <div class="form-group">
-            <label class="form-label">Interests</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter your interests"
-            />
+          <!-- Work Experiences Tab -->
+          <div class="tab-pane fade" id="work-experiences">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Job Title</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Job Title">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Company</label>
+                      <input type="text" class="form-control" placeholder="Company">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Start Date</label>
+                      <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="date" class="form-control">
+                        <button class="btn btn-outline-secondary">Today</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">End Date</label>
+                      <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="date" class="form-control">
+                        <button class="btn btn-outline-secondary">Today</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Job Title</th>
+                      <th>Company</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Description</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                          <input type="text" class="form-control" placeholder="Job Title">
+                        </div>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" placeholder="Company">
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <input type="date" class="form-control">
+                          <button class="btn btn-outline-secondary">Today</button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <input type="date" class="form-control">
+                          <button class="btn btn-outline-secondary">Today</button>
+                        </div>
+                      </td>
+                      <td>
+                        <textarea class="form-control" rows="4" placeholder="Description"></textarea>
+                      </td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Work Experience</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Preferences -->
-          <div class="form-group">
-            <label class="form-label">Preferences <span class="required">*</span></label>
-            <textarea class="form-textarea" placeholder="Enter your preferences"></textarea>
+          <!-- Research Projects Tab -->
+          <div class="tab-pane fade" id="research-projects">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Title</label>
+                      <input type="text" class="form-control" placeholder="Enter project title">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter project description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Start Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">End Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Publication</label>
+                      <input type="file" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Publication</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="text" class="form-control" placeholder="Enter project title"></td>
+                      <td><textarea class="form-control" rows="2" placeholder="Enter project description"></textarea></td>
+                      <td><input type="date" class="form-control"></td>
+                      <td><input type="date" class="form-control"></td>
+                      <td><input type="file" class="form-control"></td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Research Project</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Integration Status -->
-          <div class="form-group">
-            <label class="form-label">Integration status <span class="required">*</span></label>
-            <textarea class="form-textarea" placeholder="Enter your integration status"></textarea>
+          <div class="tab-pane fade" id="group-projects">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Title</label>
+                      <input type="text" class="form-control" placeholder="Enter project title">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter project description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Start Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">End Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Publication</label>
+                      <input type="file" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Publication</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="text" class="form-control" placeholder="Enter project title"></td>
+                      <td><textarea class="form-control" rows="2" placeholder="Enter project description"></textarea></td>
+                      <td><input type="date" class="form-control"></td>
+                      <td><input type="date" class="form-control"></td>
+                      <td><input type="file" class="form-control"></td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Research Project</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Selected Template -->
-          <div class="form-group">
-            <label class="form-label">Selected template</label>
-            <select class="form-input">
-              <option value="">--------</option>
-              <!-- Add options here -->
-            </select>
+          <div class="tab-pane fade" id="extracurricular-activities">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Activity Type</label>
+                      <select class="form-select">
+                        <option value="sports">Sports</option>
+                        <option value="music">Music</option>
+                        <option value="volunteering">Volunteering</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter activity name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Role</label>
+                      <input type="text" class="form-control" placeholder="Enter your role">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter activity description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Start Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">End Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Activity Type</th>
+                      <th>Name</th>
+                      <th>Role</th>
+                      <th>Description</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select class="form-select">
+                          <option value="sports">Sports</option>
+                          <option value="music">Music</option>
+                          <option value="volunteering">Volunteering</option>
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" placeholder="Enter activity name"></td>
+                      <td><input type="text" class="form-control" placeholder="Enter your role"></td>
+                      <td><textarea class="form-control" rows="2" placeholder="Enter activity description"></textarea></td>
+                      <td><input type="date" class="form-control"></td>
+                      <td><input type="date" class="form-control"></td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Extracurricular Activity</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Category -->
-          <div class="form-group">
-            <label class="form-label">Category</label>
-            <select class="form-input">
-              <option value="student">student</option>
-              <!-- Add more options if needed -->
-            </select>
+          <!-- Placeholder for other tabs -->
+          <div class="tab-pane fade" id="personal-statements">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Personal Statements</h2>
+                <p class="text-muted">Content for Personal Statements tab</p>
+              </div>
+            </div>
           </div>
 
-          <!-- Save Button -->
-          <div class="form-actions">
-            <button class="save-button">Save Changes</button>
+          <div class="tab-pane fade" id="career-goals">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Goal Type</label>
+                      <select class="form-select">
+                        <option value="short-term">Short-term</option>
+                        <option value="long-term">Long-term</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter goal description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Goal Type</th>
+                      <th>Description</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select class="form-select">
+                          <option value="short-term">Short-term</option>
+                          <option value="long-term">Long-term</option>
+                        </select>
+                      </td>
+                      <td><textarea class="form-control" rows="2" placeholder="Enter goal description"></textarea></td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Career Goal</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="motivation-statements">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Motivation Statements</h2>
+                <p class="text-muted">Content for Motivation Statements tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="scholarships">
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter scholarship name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Awarding Institution</label>
+                      <input type="text" class="form-control" placeholder="Enter awarding institution">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Date Awarded</label>
+                      <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="date" class="form-control">
+                        <button class="btn btn-outline-secondary">Today</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Scholarship Type</label>
+                      <input type="text" class="form-control" placeholder="Enter scholarship type">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Amount</label>
+                      <input type="text" class="form-control" placeholder="Enter amount">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Awarding Institution</th>
+                      <th>Date Awarded</th>
+                      <th>Scholarship Type</th>
+                      <th>Amount</th>
+                      <th>Visibility</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="text" class="form-control" placeholder="Enter scholarship name"></td>
+                      <td><input type="text" class="form-control" placeholder="Enter awarding institution"></td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <input type="date" class="form-control">
+                          <button class="btn btn-outline-secondary">Today</button>
+                        </div>
+                      </td>
+                      <td><input type="text" class="form-control" placeholder="Enter scholarship type"></td>
+                      <td><input type="text" class="form-control" placeholder="Enter amount"></td>
+                      <td>
+                        <select class="form-select">
+                          <option value="public">Public</option>
+                          <option value="private">Private</option>
+                          <option value="friends">Friends</option>
+                        </select>
+                      </td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Scholarship</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="scholarship-preferences">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Scholarship Preferences</h2>
+                <p class="text-muted">Content for Scholarship Preferences tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="financial-aid-status">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Financial Aid Status</h2>
+                <p class="text-muted">Content for Financial Aid Status tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="portfolios">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Portfolios</h2>
+                <p class="text-muted">Content for Portfolios tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="video-resumes">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Video Resumes</h2>
+                <p class="text-muted">Content for Video Resumes tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="recommendation-letters">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Recommendation Letters</h2>
+                <p class="text-muted">Content for Recommendation Letters tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="social-impacts">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Social Impacts</h2>
+                <p class="text-muted">Content for Social Impacts tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="availability-preferences">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Availability Preferences</h2>
+                <p class="text-muted">Content for Availability Preferences tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="profile-analytics">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Profile Analytics</h2>
+                <p class="text-muted">Content for Profile Analytics tab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="languages">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Languages</h2>
+                <p class="text-muted">Content for Languages tab</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Lucide icons
-        const lucide = window.lucide; // Declare lucide variable
-        lucide.createIcons();
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <!-- <script src="script.js"></script> -->
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // Tab switching functionality
+    const sidebarTabs = document.querySelectorAll("#sidebar-tabs .list-group-item")
+    const mobileTabSelector = document.getElementById("mobile-tab-selector")
+    const tabPanes = document.querySelectorAll(".tab-pane")
 
-        // Tabs data
-        const tabs = [
-          "General",
-          "Specializations",
-          "Social links",
-          "Academic informations",
-          "Skills",
-          "Certifications",
-          "Work experiences",
-          "Research projects",
-          "Group projects",
-          "Extracurricular activities",
-          "Personal statements",
-          "Career goals",
-          "Motivation statements",
-          "Scholarships",
-          "Scholarship preferences",
-          "Financial aid status",
-          "Portfolios",
-          "Video resumes",
-          "Recommendation letters",
-          "Social impacts",
-          "Availability preferences",
-          "Profile analytics",
-          "Languages",
-        ];
+    // Function to activate a tab
+    function activateTab(tabId) {
+      // Hide all tab panes
+      tabPanes.forEach((pane) => {
+        pane.classList.remove("show", "active")
+      })
 
-        let activeTab = "General";
+      // Show the selected tab pane
+      const selectedPane = document.getElementById(tabId)
+      if (selectedPane) {
+        selectedPane.classList.add("show", "active")
+      }
 
-        // Populate sidebar tabs
-        const sidebarTabsContainer = document.querySelector(".sidebar-tabs");
-        tabs.forEach((tab) => {
-          const button = document.createElement("button");
-          button.className = `sidebar-tab ${tab === activeTab ? "active" : ""}`;
-          button.textContent = tab;
-          button.addEventListener("click", () => {
-            setActiveTab(tab);
-          });
-          sidebarTabsContainer.appendChild(button);
-        });
+      // Update sidebar active state
+      sidebarTabs.forEach((tab) => {
+        if (tab.getAttribute("data-tab") === tabId) {
+          tab.classList.add("active")
+        } else {
+          tab.classList.remove("active")
+        }
+      })
 
-        // Populate dropdown menu
-        const dropdownMenu = document.getElementById("dropdown-menu");
-        tabs.forEach((tab) => {
-          const button = document.createElement("button");
-          button.className = `dropdown-item ${
-            tab === activeTab ? "active" : ""
-          }`;
-          button.textContent = tab;
-          button.addEventListener("click", () => {
-            setActiveTab(tab);
-            toggleDropdown(false);
-          });
-          dropdownMenu.appendChild(button);
-        });
+      // Update mobile selector
+      if (mobileTabSelector) {
+        mobileTabSelector.value = tabId
+      }
+    }
 
-        // Dropdown toggle functionality
-        const dropdownToggle = document.getElementById("dropdown-toggle");
-        const dropdownArrow = dropdownToggle.querySelector(".dropdown-arrow");
+    // Add click event listeners to sidebar tabs
+    sidebarTabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        const tabId = this.getAttribute("data-tab")
+        activateTab(tabId)
+      })
+    })
 
-        dropdownToggle.addEventListener("click", () => {
-          const isOpen = !dropdownMenu.classList.contains("hidden");
-          toggleDropdown(!isOpen);
-        });
+    // Add change event listener to mobile tab selector
+    if (mobileTabSelector) {
+      mobileTabSelector.addEventListener("change", function () {
+        activateTab(this.value)
+      })
+    }
 
-        function toggleDropdown(open) {
-          if (open) {
-            dropdownMenu.classList.remove("hidden");
-            dropdownArrow.classList.add("open");
-          } else {
-            dropdownMenu.classList.add("hidden");
-            dropdownArrow.classList.remove("open");
+    // Date picker "Today" button functionality
+    const todayButtons = document.querySelectorAll(".btn-outline-secondary")
+    todayButtons.forEach((button) => {
+      if (button.textContent.trim() === "Today") {
+        button.addEventListener("click", function () {
+          const dateInput = this.previousElementSibling
+          if (dateInput && dateInput.type === "date") {
+            const today = new Date()
+            const year = today.getFullYear()
+            const month = String(today.getMonth() + 1).padStart(2, "0")
+            const day = String(today.getDate()).padStart(2, "0")
+            dateInput.value = `${year}-${month}-${day}`
+          }
+        })
+      }
+    })
+
+    // Add another item buttons
+    const addButtons = document.querySelectorAll(".btn-outline-primary")
+    addButtons.forEach((button) => {
+      if (button.textContent.includes("Add another")) {
+        button.addEventListener("click", () => {
+          alert("This would add another item in a real application.")
+        })
+      }
+    })
+
+    // Remove buttons
+    const removeButtons = document.querySelectorAll(".btn-danger")
+    removeButtons.forEach((button) => {
+      if (button.textContent.trim() === "Remove") {
+        button.addEventListener("click", function () {
+          const card = this.closest(".card")
+          const row = this.closest("tr")
+
+          if (card) {
+            card.remove()
+          } else if (row) {
+            row.remove()
+          }
+        })
+      }
+    })
+
+    // Rich text editor buttons (simplified)
+    const richTextButtons = document.querySelectorAll(".btn-toolbar .btn")
+    richTextButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const textarea = this.closest(".border").querySelector("textarea")
+        if (textarea) {
+          const buttonText = this.textContent.trim()
+          let tag = ""
+
+          switch (buttonText) {
+            case "B":
+              tag = "**bold**"
+              break
+            case "I":
+              tag = "*italic*"
+              break
+            case "U":
+              tag = "_underline_"
+              break
+          }
+
+          if (tag) {
+            const start = textarea.selectionStart
+            const end = textarea.selectionEnd
+            const selectedText = textarea.value.substring(start, end)
+            const replacement = tag.replace(/\*\*|_|\*/g, (match) => {
+              return selectedText ? match : match + match
+            })
+
+            textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end)
+            textarea.focus()
           }
         }
+      })
+    })
+  })
 
-        // Set active tab
-        function setActiveTab(tab) {
-          activeTab = tab;
 
-          // Update sidebar tabs
-          document.querySelectorAll(".sidebar-tab").forEach((el) => {
-            el.classList.toggle("active", el.textContent === tab);
-          });
+   </script>
 
-          // Update dropdown items
-          document.querySelectorAll(".dropdown-item").forEach((el) => {
-            el.classList.toggle("active", el.textContent === tab);
-          });
-
-          // Update dropdown button text
-          document.getElementById("active-tab-text").textContent = tab;
-        }
-
-        // Today button functionality
-        const todayButton = document.querySelector(".today-button");
-        todayButton.addEventListener("click", () => {
-          const today = new Date();
-          const year = today.getFullYear();
-          const month = String(today.getMonth() + 1).padStart(2, "0");
-          const day = String(today.getDate()).padStart(2, "0");
-          const formattedDate = `${year}-${month}-${day}`;
-
-          const dateInput = document.querySelector('input[type="date"]');
-          dateInput.value = formattedDate;
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener("click", (event) => {
-          const isClickInside =
-            dropdownToggle.contains(event.target) ||
-            dropdownMenu.contains(event.target);
-          if (!isClickInside && !dropdownMenu.classList.contains("hidden")) {
-            toggleDropdown(false);
-          }
-        });
-      });
-    </script>
-  </body>
+</body>
 </html>
+
