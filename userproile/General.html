@@ -118,7 +118,6 @@
                     <input type="date" class="form-control" id="dob">
                     <button class="btn btn-outline-secondary">Today</button>
                   </div>
-                  <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
                 </div>
               </div>
 
@@ -168,7 +167,6 @@
                 <div class="mb-3">
                   <label class="form-label">Profile photo</label>
                   <div>
-                    <p class="text-muted">Currently: profile_photos/_MG_0119.png</p>
                     <div class="d-flex align-items-center gap-2">
                       <input type="file" class="form-control" id="profile-photo">
                     </div>
@@ -342,7 +340,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- Existing specializations -->
                     <tr>
                       <td>
                         <select class="form-select">
@@ -489,7 +486,6 @@
                   <div class="card-body">
                     <div class="mb-3">
                       <div class="d-flex align-items-center gap-2 mb-2">
-                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
                         <label class="form-label mb-0">Educational institution</label>
                       </div>
                       <input type="text" class="form-control" placeholder="Institution name">
@@ -564,7 +560,6 @@
                     <tr>
                       <td>
                         <div class="d-flex align-items-center gap-2">
-                          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
                           <input type="text" class="form-control" placeholder="Institution name">
                         </div>
                       </td>
@@ -596,7 +591,6 @@
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <input type="date" class="form-control">
-                          <button class="btn btn-outline-secondary">Today</button>
                         </div>
                       </td>
                       <td>
@@ -752,7 +746,6 @@
                         <input type="date" class="form-control" value="2023-03-30">
                         <button class="btn btn-outline-secondary">Today</button>
                       </div>
-                      <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
                     </div>
                     <div class="mb-3">
                       <label class="form-label">Expiration date</label>
@@ -760,7 +753,6 @@
                         <input type="date" class="form-control">
                         <button class="btn btn-outline-secondary">Today</button>
                       </div>
-                      <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
                     </div>
                     <div class="mb-3">
                       <label class="form-label">Certification image</label>
@@ -812,14 +804,12 @@
                           <input type="date" class="form-control" value="2023-03-30">
                           <button class="btn btn-outline-secondary">Today</button>
                         </div>
-                        <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
                       </td>
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <input type="date" class="form-control">
                           <button class="btn btn-outline-secondary">Today</button>
                         </div>
-                        <small class="text-muted">Note: You are 1 hour ahead of server time.</small>
                       </td>
                       <td>
                         <input type="file" class="form-control">
@@ -1215,10 +1205,27 @@
 
           <!-- Placeholder for other tabs -->
           <div class="tab-pane fade" id="personal-statements">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Personal Statements</h2>
-                <p class="text-muted">Content for Personal Statements tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-personal-statement-btn">+ New Personal Statement</button>
+              <div id="personal-statement-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Statement <span class="text-danger">*</span></label>
+                    <textarea class="form-control" rows="4" placeholder="Enter your personal statement"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Visibility <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                      <option value="friends">Friends</option>
+                    </select>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-personal-statement-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-personal-statement-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1294,10 +1301,27 @@
           </div>
 
           <div class="tab-pane fade" id="motivation-statements">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Motivation Statements</h2>
-                <p class="text-muted">Content for Motivation Statements tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-motivation-statement-btn">+ New Motivation Statement</button>
+              <div id="motivation-statement-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Statement <span class="text-danger">*</span></label>
+                    <textarea class="form-control" rows="4" placeholder="Enter your motivation statement"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Visibility <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                      <option value="friends">Friends</option>
+                    </select>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-motivation-statement-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-motivation-statement-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1320,7 +1344,6 @@
                       <label class="form-label">Date Awarded</label>
                       <div class="d-flex flex-column flex-sm-row gap-2">
                         <input type="date" class="form-control">
-                        <button class="btn btn-outline-secondary">Today</button>
                       </div>
                     </div>
                     <div class="mb-3">
@@ -1367,7 +1390,6 @@
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <input type="date" class="form-control">
-                          <button class="btn btn-outline-secondary">Today</button>
                         </div>
                       </td>
                       <td><input type="text" class="form-control" placeholder="Enter scholarship type"></td>
@@ -1400,73 +1422,289 @@
           </div>
 
           <div class="tab-pane fade" id="financial-aid-status">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Financial Aid Status</h2>
-                <p class="text-muted">Content for Financial Aid Status tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-financial-aid-status-btn">+ New Financial Aid Status</button>
+              <div id="financial-aid-status-form" class="card d-none">
+                <div class="card-body">
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="is-seeking-aid">
+                    <label class="form-check-label" for="is-seeking-aid">Is seeking aid</label>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Aid type</label>
+                    <input type="text" class="form-control" placeholder="Enter aid type">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Visibility <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                      <option value="friends">Friends</option>
+                    </select>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-financial-aid-status-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-financial-aid-status-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="portfolios">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Portfolios</h2>
-                <p class="text-muted">Content for Portfolios tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-portfolio-btn">+ New Portfolio</button>
+              <div id="portfolio-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Website URL <span class="text-danger">*</span></label>
+                    <input type="url" class="form-control" placeholder="Enter portfolio URL">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Visibility <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                      <option value="friends">Friends</option>
+                    </select>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-portfolio-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-portfolio-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="video-resumes">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Video Resumes</h2>
-                <p class="text-muted">Content for Video Resumes tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-video-resume-btn">+ New Video Resume</button>
+              <div id="video-resume-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Video File</label>
+                    <input type="file" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Video URL</label>
+                    <input type="url" class="form-control" placeholder="Enter video URL">
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-video-resume-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-video-resume-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="recommendation-letters">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Recommendation Letters</h2>
-                <p class="text-muted">Content for Recommendation Letters tab</p>
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Letter Type</label>
+                      <select class="form-select">
+                        <option value="academic">Academic</option>
+                        <option value="professional">Professional</option>
+                        <option value="personal">Personal</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Recommender Name</label>
+                      <input type="text" class="form-control" placeholder="Enter recommender name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Recommender Contact</label>
+                      <input type="text" class="form-control" placeholder="Enter recommender contact">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Letter File</label>
+                      <input type="file" class="form-control">
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Letter Type</th>
+                      <th>Recommender Name</th>
+                      <th>Recommender Contact</th>
+                      <th>Letter File</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select class="form-select">
+                          <option value="academic">Academic</option>
+                          <option value="professional">Professional</option>
+                          <option value="personal">Personal</option>
+                        </select>
+                      </td>
+                      <td><input type="text" class="form-control" placeholder="Enter recommender name"></td>
+                      <td><input type="text" class="form-control" placeholder="Enter recommender contact"></td>
+                      <td><input type="file" class="form-control"></td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Recommendation Letter</button>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="social-impacts">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Social Impacts</h2>
-                <p class="text-muted">Content for Social Impacts tab</p>
+            <div class="mb-4">
+              <!-- Mobile card-based layout -->
+              <div class="d-md-none">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Cause</label>
+                      <input type="text" class="form-control" placeholder="Enter cause">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Projects</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter projects"></textarea>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop table layout -->
+              <div class="d-none d-md-block table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Cause</th>
+                      <th>Description</th>
+                      <th>Projects</th>
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="text" class="form-control" placeholder="Enter cause"></td>
+                      <td><textarea class="form-control" rows="2" placeholder="Enter description"></textarea></td>
+                      <td><textarea class="form-control" rows="2" placeholder="Enter projects"></textarea></td>
+                      <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-3">
+                <button class="btn btn-outline-primary">Add another Social Impact</button>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="availability-preferences">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Availability Preferences</h2>
-                <p class="text-muted">Content for Availability Preferences tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-availability-preference-btn">+ New Availability Preference</button>
+              <div id="availability-preference-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Available from</label>
+                    <div class="d-flex flex-column flex-sm-row gap-2">
+                      <input type="date" class="form-control">
+                      <button class="btn btn-outline-secondary">Today</button>
+                    </div>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="willing-to-relocate">
+                    <label class="form-check-label" for="willing-to-relocate">Willing to relocate</label>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Preferred work sector</label>
+                    <input type="text" class="form-control" placeholder="Enter preferred work sector">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Desired job roles</label>
+                    <input type="text" class="form-control" placeholder="Enter desired job roles">
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-availability-preference-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-availability-preference-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="profile-analytics">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Profile Analytics</h2>
-                <p class="text-muted">Content for Profile Analytics tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-profile-analytics-btn">+ New Profile Analytics</button>
+              <div id="profile-analytics-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Profile views <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="0">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Resume downloads <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="0">
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-profile-analytics-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-profile-analytics-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="tab-pane fade" id="languages">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Languages</h2>
-                <p class="text-muted">Content for Languages tab</p>
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mb-3" id="add-language-btn">+ New Language</button>
+              <div id="language-form" class="card d-none">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Language <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter language">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Proficiency level <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                      <option value="native">Native</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Visibility <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                      <option value="friends">Friends</option>
+                    </select>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-sm btn-success" id="save-language-btn">Save</button>
+                    <button class="btn btn-sm btn-danger" id="remove-language-btn">Remove</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1551,7 +1789,7 @@
     addButtons.forEach((button) => {
       if (button.textContent.includes("Add another")) {
         button.addEventListener("click", () => {
-          alert("This would add another item in a real application.")
+          // alert("This would add another item in a real application.")
         })
       }
     })
@@ -1608,9 +1846,332 @@
         }
       })
     })
-  })
 
+    // Personal Statements tab functionality
+    const addPersonalButton = document.getElementById("add-personal-statement-btn");
+    const personalForm = document.getElementById("personal-statement-form");
+    const removePersonalButton = document.getElementById("remove-personal-statement-btn");
 
+    addPersonalButton.addEventListener("click", () => {
+      personalForm.classList.remove("d-none");
+    });
+
+    removePersonalButton.addEventListener("click", () => {
+      personalForm.classList.add("d-none");
+    });
+
+    // Motivation Statements tab functionality
+    const addMotivationButton = document.getElementById("add-motivation-statement-btn");
+    const motivationForm = document.getElementById("motivation-statement-form");
+    const removeMotivationButton = document.getElementById("remove-motivation-statement-btn");
+
+    addMotivationButton.addEventListener("click", () => {
+      motivationForm.classList.remove("d-none");
+    });
+
+    removeMotivationButton.addEventListener("click", () => {
+      motivationForm.classList.add("d-none");
+    });
+
+    // Financial Aid Status tab functionality
+    const addFinancialAidButton = document.getElementById("add-financial-aid-status-btn");
+    const financialAidForm = document.getElementById("financial-aid-status-form");
+    const removeFinancialAidButton = document.getElementById("remove-financial-aid-status-btn");
+
+    addFinancialAidButton.addEventListener("click", () => {
+      financialAidForm.classList.remove("d-none");
+    });
+
+    removeFinancialAidButton.addEventListener("click", () => {
+      financialAidForm.classList.add("d-none");
+    });
+
+    // Portfolios tab functionality
+    const addPortfolioButton = document.getElementById("add-portfolio-btn");
+    const portfolioForm = document.getElementById("portfolio-form");
+    const removePortfolioButton = document.getElementById("remove-portfolio-btn");
+
+    addPortfolioButton.addEventListener("click", () => {
+      portfolioForm.classList.remove("d-none");
+    });
+
+    removePortfolioButton.addEventListener("click", () => {
+      portfolioForm.classList.add("d-none");
+    });
+
+    // Video Resumes tab functionality
+    const addVideoResumeButton = document.getElementById("add-video-resume-btn");
+    const videoResumeForm = document.getElementById("video-resume-form");
+    const removeVideoResumeButton = document.getElementById("remove-video-resume-btn");
+
+    addVideoResumeButton.addEventListener("click", () => {
+      videoResumeForm.classList.remove("d-none");
+    });
+
+    removeVideoResumeButton.addEventListener("click", () => {
+      videoResumeForm.classList.add("d-none");
+    });
+
+    // Availability Preferences tab functionality
+    const addAvailabilityPreferenceButton = document.getElementById("add-availability-preference-btn");
+    const availabilityPreferenceForm = document.getElementById("availability-preference-form");
+    const removeAvailabilityPreferenceButton = document.getElementById("remove-availability-preference-btn");
+
+    addAvailabilityPreferenceButton.addEventListener("click", () => {
+      availabilityPreferenceForm.classList.remove("d-none");
+    });
+
+    removeAvailabilityPreferenceButton.addEventListener("click", () => {
+      availabilityPreferenceForm.classList.add("d-none");
+    });
+
+    // Profile Analytics tab functionality
+    const addProfileAnalyticsButton = document.getElementById("add-profile-analytics-btn");
+    const profileAnalyticsForm = document.getElementById("profile-analytics-form");
+    const removeProfileAnalyticsButton = document.getElementById("remove-profile-analytics-btn");
+
+    addProfileAnalyticsButton.addEventListener("click", () => {
+      profileAnalyticsForm.classList.remove("d-none");
+    });
+
+    removeProfileAnalyticsButton.addEventListener("click", () => {
+      profileAnalyticsForm.classList.add("d-none");
+    });
+
+    // Languages tab functionality
+    const addLanguageButton = document.getElementById("add-language-btn");
+    const languageForm = document.getElementById("language-form");
+    const removeLanguageButton = document.getElementById("remove-language-btn");
+
+    addLanguageButton.addEventListener("click", () => {
+      languageForm.classList.remove("d-none");
+    });
+
+    removeLanguageButton.addEventListener("click", () => {
+      languageForm.classList.add("d-none");
+    });
+
+    // Specializations tab functionality
+    const specializationsTable = document.querySelector("#specializations table tbody");
+    const addSpecializationButton = document.querySelector("#specializations .btn-outline-primary");
+    addSpecializationButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td>
+            <select class="form-select">
+              <option value="accountant">Accountant</option>
+              <option value="developer">Developer</option>
+              <option value="designer">Designer</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      specializationsTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Social Links tab functionality
+    const socialLinksTable = document.querySelector("#social-links table tbody");
+    const addSocialLinkButton = document.querySelector("#social-links .btn-outline-primary");
+    addSocialLinkButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td>
+            <select class="form-select">
+              <option value="linkedin">LinkedIn</option>
+              <option value="twitter">Twitter</option>
+              <option value="github">GitHub</option>
+            </select>
+          </td>
+          <td>
+            <input type="url" class="form-control" placeholder="Enter URL">
+          </td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      socialLinksTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Academic Informations tab functionality
+    const academicTable = document.querySelector("#academic-informations table tbody");
+    const addAcademicButton = document.querySelector("#academic-informations .btn-outline-primary");
+    addAcademicButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td><input type="text" class="form-control" placeholder="Institution name"></td>
+          <td>
+            <select class="form-select">
+              <option value="bachelor">Bachelor's</option>
+              <option value="master">Master's</option>
+              <option value="phd">PhD</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" placeholder="Field of study"></td>
+          <td><input type="text" class="form-control" placeholder="GPA"></td>
+          <td><textarea class="form-control" rows="2" placeholder="Academic achievements"></textarea></td>
+          <td><input type="date" class="form-control"></td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      academicTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Skills tab functionality
+    const skillsTable = document.querySelector("#skills table tbody");
+    const addSkillButton = document.querySelector("#skills .btn-outline-primary");
+    addSkillButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td>
+            <select class="form-select">
+              <option value="javascript">JavaScript</option>
+              <option value="react">React</option>
+              <option value="nextjs">Next.js</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-select">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-select">
+              <option value="technical">Technical</option>
+              <option value="soft">Soft</option>
+              <option value="language">Language</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      skillsTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Certifications tab functionality
+    const certificationsTable = document.querySelector("#certifications table tbody");
+    const addCertificationButton = document.querySelector("#certifications .btn-outline-primary");
+    addCertificationButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td><input type="text" class="form-control" placeholder="Certification name"></td>
+          <td><input type="text" class="form-control" placeholder="Issuing organization"></td>
+          <td><input type="date" class="form-control"></td>
+          <td><input type="date" class="form-control"></td>
+          <td><input type="file" class="form-control"></td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      certificationsTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Work Experiences tab functionality
+    const workExperiencesTable = document.querySelector("#work-experiences table tbody");
+    const addWorkExperienceButton = document.querySelector("#work-experiences .btn-outline-primary");
+    addWorkExperienceButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td><input type="text" class="form-control" placeholder="Job Title"></td>
+          <td><input type="text" class="form-control" placeholder="Company"></td>
+          <td><input type="date" class="form-control"></td>
+          <td><input type="date" class="form-control"></td>
+          <td><textarea class="form-control" rows="2" placeholder="Description"></textarea></td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      workExperiencesTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Extracurricular Activities tab functionality
+    const extracurricularTable = document.querySelector("#extracurricular-activities table tbody");
+    const addExtracurricularButton = document.querySelector("#extracurricular-activities .btn-outline-primary");
+    addExtracurricularButton.addEventListener("click", () => {
+      const newRow = `
+        <tr>
+          <td>
+            <select class="form-select">
+              <option value="sports">Sports</option>
+              <option value="music">Music</option>
+              <option value="volunteering">Volunteering</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" placeholder="Enter activity name"></td>
+          <td><input type="text" class="form-control" placeholder="Enter your role"></td>
+          <td><textarea class="form-control" rows="2" placeholder="Enter activity description"></textarea></td>
+          <td><input type="date" class="form-control"></td>
+          <td><input type="date" class="form-control"></td>
+          <td>
+            <select class="form-select">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </td>
+        </tr>`;
+      extracurricularTable.insertAdjacentHTML("beforeend", newRow);
+    });
+
+    // Remove row functionality
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn-danger")) {
+        const row = event.target.closest("tr");
+        if (row) row.remove();
+      }
+    });
+  });
    </script>
 
 </body>
