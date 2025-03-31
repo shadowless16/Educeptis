@@ -9,7 +9,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="General.css">
 </head>
 <body>
   <div class="container-fluid">
@@ -1154,6 +1154,52 @@
                     </div>
                   </div>
                 </div>
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus"></i></button>
+                        <label class="form-label mb-0">Activity Type</label>
+                      </div>
+                      <select class="form-select">
+                        <option value="sports">Sports</option>
+                        <option value="music">Music</option>
+                        <option value="volunteering">Volunteering</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter activity name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Role</label>
+                      <input type="text" class="form-control" placeholder="Enter your role">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Description</label>
+                      <textarea class="form-control" rows="4" placeholder="Enter activity description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Start Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">End Date</label>
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Visibility</label>
+                      <select class="form-select">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                      </select>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Desktop table layout -->
@@ -1562,52 +1608,6 @@
                 </table>
               </div>
               <div class="text-end mt-3">
-                <button class="btn btn-outline-primary">Add another Recommendation Letter</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="social-impacts">
-            <div class="mb-4">
-              <!-- Mobile card-based layout -->
-              <div class="d-md-none">
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <div class="mb-3">
-                      <label class="form-label">Cause</label>
-                      <input type="text" class="form-control" placeholder="Enter cause">
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Description</label>
-                      <textarea class="form-control" rows="4" placeholder="Enter description"></textarea>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Projects</label>
-                      <textarea class="form-control" rows="4" placeholder="Enter projects"></textarea>
-                    </div>
-                    <div class="text-end">
-                      <button class="btn btn-sm btn-danger">Remove</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Desktop table layout -->
-              <div class="d-none d-md-block table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Cause</th>
-                      <th>Description</th>
-                      <th>Projects</th>
-                      <th>Delete?</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><input type="text" class="form-control" placeholder="Enter cause"></td>
-                      <td><textarea class="form-control" rows="2" placeholder="Enter description"></textarea></td>
-                      <td><textarea class="form-control" rows="2" placeholder="Enter projects"></textarea></td>
                       <td><button class="btn btn-sm btn-danger">Remove</button></td>
                     </tr>
                   </tbody>
@@ -2169,6 +2169,192 @@
       if (event.target.classList.contains("btn-danger")) {
         const row = event.target.closest("tr");
         if (row) row.remove();
+      }
+    });
+
+    // Add another item buttons for mobile view
+    const addMobileButtons = document.querySelectorAll(".d-md-none .btn-outline-secondary");
+    addMobileButtons.forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const card = this.closest(".card");
+        if (card) {
+          const clone = card.cloneNode(true);
+          // Ensure the cloned card is visible in mobile view
+          clone.classList.remove("d-none");
+          clone.style.display = "block";
+          // Rebind remove button for clone
+          const removeButton = clone.querySelector(".btn-danger");
+          if (removeButton) {
+            removeButton.addEventListener("click", function (e) {
+              e.stopPropagation();
+              clone.remove();
+            });
+          }
+          card.parentNode.insertBefore(clone, card.nextSibling);
+          // Force layout reflow so that clone appears immediately
+          clone.offsetHeight;
+          // Clear input fields in the cloned card
+          const inputs = clone.querySelectorAll("input, textarea, select");
+          inputs.forEach((input) => {
+            if (input.type === "checkbox" || input.type === "radio") {
+              input.checked = false;
+            } else if (input.type === "file") {
+              input.value = "";
+            } else {
+              input.value = "";
+            }
+          });
+        }
+      });
+    });
+
+    // Add another Social link button functionality for mobile view
+    const addSocialLinkMobileButtons = document.querySelectorAll("#social-links .d-md-none .btn-outline-secondary");
+    addSocialLinkMobileButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const card = this.closest(".card");
+        if (card) {
+          const clone = card.cloneNode(true);
+          const removeButton = clone.querySelector(".btn-danger");
+          if (removeButton) {
+            removeButton.addEventListener("click", function () {
+              clone.remove();
+            });
+          }
+          card.parentNode.insertBefore(clone, card.nextSibling);
+
+          // Clear input fields in the cloned card
+          const inputs = clone.querySelectorAll("input, textarea, select");
+          inputs.forEach((input) => {
+            if (input.type === "checkbox" || input.type === "radio") {
+              input.checked = false;
+            } else if (input.type === "file") {
+              input.value = "";
+            } else {
+              input.value = "";
+            }
+          });
+        }
+      });
+    });
+
+    // Add functionality for mobile add buttons 
+    const addMobileItemButtons = document.querySelectorAll(".d-md-none .btn-outline-primary");
+    addMobileItemButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const tabPane = this.closest(".tab-pane");
+        const cardContainer = tabPane.querySelector(".d-md-none");
+        const templateCard = cardContainer.querySelector(".card");
+        
+        if (templateCard) {
+          const newCard = templateCard.cloneNode(true);
+          // Clear all input values
+          newCard.querySelectorAll('input, textarea, select').forEach(input => {
+            if (input.type === 'file') {
+              input.value = '';
+            } else if (input.type === 'checkbox' || input.type === 'radio') {
+              input.checked = false;
+            } else {
+              input.value = '';
+            }
+          });
+          
+          // Make sure the new card is visible
+          newCard.classList.remove("d-none");
+          newCard.style.display = "block";
+          
+          // Add remove functionality to the new card
+          const removeBtn = newCard.querySelector(".btn-danger");
+          if (removeBtn) {
+            removeBtn.addEventListener("click", function() {
+              newCard.remove();
+            });
+          }
+          
+          // Insert the new card
+          cardContainer.appendChild(newCard);
+        }
+      });
+    });
+
+    // Enhanced mobile add button functionality
+    function handleMobileAdd(tabPane) {
+      const cardContainer = tabPane.querySelector(".d-md-none");
+      const templateCard = cardContainer.querySelector(".card");
+      
+      if (templateCard) {
+        const newCard = templateCard.cloneNode(true);
+        
+        // Clear all input values in the new card
+        newCard.querySelectorAll('input, textarea, select').forEach(input => {
+          if (input.type === 'file') {
+            input.value = '';
+          } else if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = false;
+          } else {
+            input.value = '';
+          }
+        });
+        
+        // Make sure the new card is visible
+        newCard.style.display = "block";
+        newCard.classList.remove("d-none");
+        
+        // Add remove button functionality
+        const removeBtn = newCard.querySelector(".btn-danger");
+        if (removeBtn) {
+          removeBtn.addEventListener("click", function() {
+            newCard.remove();
+          });
+        }
+        
+        // Add the new card to the container
+        cardContainer.appendChild(newCard);
+      }
+    }
+
+    // Add click handlers to all mobile add buttons
+    document.querySelectorAll(".tab-pane").forEach(tabPane => {
+      const addButton = tabPane.querySelector(".d-md-none .btn-outline-primary");
+      if (addButton) {
+        addButton.addEventListener("click", () => handleMobileAdd(tabPane));
+      }
+    });
+
+    // Individual tab handlers for mobile
+    ["specializations", "social-links", "academic-informations", "skills", 
+     "certifications", "work-experiences", "research-projects", "group-projects",
+     "extracurricular-activities"].forEach(tabId => {
+      const tabPane = document.getElementById(tabId);
+      const addButton = tabPane?.querySelector(".btn-outline-primary");
+      if (addButton) {
+        addButton.addEventListener("click", (e) => {
+          if (window.innerWidth < 768) { // Mobile view only
+            e.preventDefault();
+            handleMobileAdd(tabPane);
+          }
+        });
+      }
+    });
+
+    // Mobile-specific card actions
+    document.querySelectorAll(".d-md-none .card").forEach(card => {
+      const addBtn = card.querySelector(".btn-outline-secondary");
+      const removeBtn = card.querySelector(".btn-danger");
+      
+      if (addBtn) {
+        addBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          handleMobileAdd(card.closest(".tab-pane"));
+        });
+      }
+      
+      if (removeBtn) {
+        removeBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          card.remove();
+        });
       }
     });
   });
