@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewHope Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="course.css">
+</head>
+<body>
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Learning Dashboard</h1>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tabs-list">
+                    <button class="tab-trigger active" data-tab="enrolled">My Enrolled Courses</button>
+                    <button class="tab-trigger" data-tab="marketplace">Course Marketplace</button>
+                </div>
+
+                <!-- Enrolled Courses Tab -->
+                <div class="tab-content active" id="enrolled">
+                    <div class="course-grid">
+                        <div class="enrolled-course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Web+Development" alt="Web Development">
+                                <div class="course-badge blue">Course</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.2
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Introduction to Web Development</h3>
+                                <div class="progress-container">
+                                    <div class="progress-header">
+                                        <span>Progress</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="btn btn-primary preview-btn" data-course="Introduction to Web Development" data-modules='[
+                                        {"title": "HTML Basics", "locked": false},
+                                        {"title": "CSS Fundamentals", "locked": false},
+                                        {"title": "JavaScript Introduction", "locked": true}
+                                    ]'>Preview</button>
+                                    <a href="#" class="btn btn-outline">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="enrolled-course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=JavaScript+E-Book" alt="JavaScript E-Book">
+                                <div class="course-badge green">Resource</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.0
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">JavaScript E-Book</h3>
+                                <div class="progress-container">
+                                    <div class="progress-header">
+                                        <span>Progress</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="btn btn-primary preview-btn" data-course="JavaScript E-Book" data-modules='[
+                                        {"title": "Variables & Data Types", "locked": false},
+                                        {"title": "Functions & Objects", "locked": false},
+                                        {"title": "Advanced JavaScript", "locked": true}
+                                    ]'>Preview</button>
+                                    <a href="#" class="btn btn-outline">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="enrolled-course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Python+Programming" alt="Python Programming">
+                                <div class="course-badge yellow">Skill</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.4
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Python Programming</h3>
+                                <div class="progress-container">
+                                    <div class="progress-header">
+                                        <span>Progress</span>
+                                        <span>50%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="btn btn-primary preview-btn" data-course="Python Programming" data-modules='[
+                                        {"title": "Python Basics", "locked": false},
+                                        {"title": "Data Structures", "locked": false},
+                                        {"title": "Advanced Python", "locked": true}
+                                    ]'>Preview</button>
+                                    <a href="#" class="btn btn-outline">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="enrolled-course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=UI/UX+Design" alt="UI/UX Design">
+                                <div class="course-badge purple">Tutorial</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.8
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">UI/UX Design Fundamentals</h3>
+                                <div class="progress-container">
+                                    <div class="progress-header">
+                                        <span>Progress</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="btn btn-primary preview-btn" data-course="UI/UX Design Fundamentals" data-modules='[
+                                        {"title": "Design Principles", "locked": false},
+                                        {"title": "User Research", "locked": false},
+                                        {"title": "Prototyping", "locked": true}
+                                    ]'>Preview</button>
+                                    <a href="#" class="btn btn-outline">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketplace Tab -->
+                <div class="tab-content" id="marketplace">
+                    <!-- Marketplace Filters -->
+                    <div class="marketplace-filters">
+                        <div class="search-container">
+                            <i class="fas fa-search"></i>
+                            <input type="search" class="search-input" placeholder="Search courses...">
+                        </div>
+                        <div class="filter-container">
+                            <div class="select-container">
+                                <select class="select-input" id="categoryFilter">
+                                    <option value="all">All Categories</option>
+                                    <option value="course">Courses</option>
+                                    <option value="bundle">Course Bundles</option>
+                                    <option value="certification">Certifications</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="select-container">
+                                <select class="select-input" id="levelFilter">
+                                    <option value="all">All Levels</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marketplace Courses -->
+                    <div class="course-grid">
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Data+Science" alt="Data Science">
+                                <div class="course-badge blue">Course</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.7
+                                </div>
+                                <div class="bestseller-badge">Bestseller</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Data Science & Machine Learning Bootcamp</h3>
+                                <p class="course-instructor">Dr. Oluwaseun Adebayo</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 12,489
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 30h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> Intermediate
+                                    </div>
+                                </div>
+                                <p class="course-description">Master data science, machine learning & Python with hands-on projects & real-world applications.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦29,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="Data Science & Machine Learning Bootcamp" data-instructor="Dr. Oluwaseun Adebayo" data-rating="4.7" data-students="12,489" data-duration="30h" data-level="Intermediate" data-price="₦29,999" data-description="Master data science, machine learning & Python with hands-on projects & real-world applications. Perfect for aspiring data scientists and analysts.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Web+Development" alt="Web Development">
+                                <div class="course-badge purple">Course Bundle</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.9
+                                </div>
+                                <div class="bestseller-badge">Bestseller</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Full Stack Web Development</h3>
+                                <p class="course-instructor">Chidi Okonkwo</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 28,765
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 65h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> All Levels
+                                    </div>
+                                </div>
+                                <p class="course-description">Learn to build complete web applications with modern JavaScript frameworks, APIs, and databases.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦49,999</span>
+                                    <span class="original-price">₦74,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="Full Stack Web Development" data-instructor="Chidi Okonkwo" data-rating="4.9" data-students="28,765" data-duration="65h" data-level="All Levels" data-price="₦49,999" data-original-price="₦74,999" data-description="Learn to build complete web applications with modern JavaScript frameworks, APIs, and databases. Includes Node.js, React, and MongoDB.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Flutter" alt="Flutter">
+                                <div class="course-badge blue">Course</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Mobile App Development with Flutter</h3>
+                                <p class="course-instructor">Amina Ibrahim</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 8,432
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 24h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> Beginner
+                                    </div>
+                                </div>
+                                <p class="course-description">Build beautiful cross-platform mobile apps for iOS and Android with a single codebase.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦22,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="Mobile App Development with Flutter" data-instructor="Amina Ibrahim" data-rating="4.5" data-students="8,432" data-duration="24h" data-level="Beginner" data-price="₦22,999" data-description="Build beautiful cross-platform mobile apps for iOS and Android with a single codebase using Flutter and Dart programming language.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=DevOps" alt="DevOps">
+                                <div class="course-badge green">Certification</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.6
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">DevOps & Cloud Engineering Masterclass</h3>
+                                <p class="course-instructor">Babajide Afolayan</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 5,738
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 35h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> Advanced
+                                    </div>
+                                    <div class="certificate-badge">
+                                        <i class="fas fa-award"></i> Certificate
+                                    </div>
+                                </div>
+                                <p class="course-description">Master modern DevOps practices with Docker, Kubernetes, AWS, and CI/CD pipelines.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦34,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="DevOps & Cloud Engineering Masterclass" data-instructor="Babajide Afolayan" data-rating="4.6" data-students="5,738" data-duration="35h" data-level="Advanced" data-price="₦34,999" data-description="Master modern DevOps practices with Docker, Kubernetes, AWS, and CI/CD pipelines. Includes hands-on projects and certification preparation.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=UI/UX+Design" alt="UI/UX Design">
+                                <div class="course-badge blue">Course</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.8
+                                </div>
+                                <div class="bestseller-badge">Bestseller</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">UI/UX Design Mastery</h3>
+                                <p class="course-instructor">Chioma Eze</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 9,547
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 28h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> Intermediate
+                                    </div>
+                                </div>
+                                <p class="course-description">Learn professional UI/UX design with Figma, user research, wireframing, and prototyping.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦26,999</span>
+                                    <span class="original-price">₦34,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="UI/UX Design Mastery" data-instructor="Chioma Eze" data-rating="4.8" data-students="9,547" data-duration="28h" data-level="Intermediate" data-price="₦26,999" data-original-price="₦34,999" data-description="Learn professional UI/UX design with Figma, user research, wireframing, prototyping, and modern design systems. Includes real-world projects.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Cybersecurity" alt="Cybersecurity">
+                                <div class="course-badge blue">Course</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.7
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Cybersecurity Fundamentals</h3>
+                                <p class="course-instructor">Yusuf Abdullahi</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 7,129
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 32h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> Beginner to Intermediate
+                                    </div>
+                                </div>
+                                <p class="course-description">Learn essential cybersecurity skills including network security, ethical hacking, and penetration testing.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦28,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="Cybersecurity Fundamentals" data-instructor="Yusuf Abdullahi" data-rating="4.7" data-students="7,129" data-duration="32h" data-level="Beginner to Intermediate" data-price="₦28,999" data-description="Learn essential cybersecurity skills including network security, ethical hacking, penetration testing, and security best practices.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Blockchain" alt="Blockchain">
+                                <div class="course-badge blue">Course</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Blockchain Development with Ethereum</h3>
+                                <p class="course-instructor">Folake Adeleke</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 4,281
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 26h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> Intermediate
+                                    </div>
+                                </div>
+                                <p class="course-description">Master blockchain development with Ethereum, Solidity, and Web3.js. Build decentralized applications.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦32,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="Blockchain Development with Ethereum" data-instructor="Folake Adeleke" data-rating="4.5" data-students="4,281" data-duration="26h" data-level="Intermediate" data-price="₦32,999" data-description="Master blockchain development with Ethereum, Solidity, and Web3.js. Build decentralized applications (dApps) and smart contracts.">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="https://placehold.co/400x200/e2e8f0/1e293b?text=Game+Dev" alt="Game Development">
+                                <div class="course-badge purple">Course Bundle</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> 4.8
+                                </div>
+                                <div class="bestseller-badge">Bestseller</div>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">Game Development with Unity</h3>
+                                <p class="course-instructor">Tunde Ogunlade</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-users"></i> 11,248
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i> 45h
+                                    </div>
+                                </div>
+                                <div class="course-badges">
+                                    <div class="level-badge">
+                                        <i class="fas fa-book"></i> All Levels
+                                    </div>
+                                </div>
+                                <p class="course-description">Create engaging 2D and 3D games with Unity and C#. Learn game physics, AI, animations, and publishing.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="current-price">₦36,999</span>
+                                    <span class="original-price">₦49,999</span>
+                                </div>
+                                <button class="btn btn-primary view-details-btn" data-course="Game Development with Unity" data-instructor="Tunde Ogunlade" data-rating="4.8" data-students="11,248" data-duration="45h" data-level="All Levels" data-price="₦36,999" data-original-price="₦49,999" data-description="Create engaging 2D and 3D games with Unity and C#. Learn game physics, AI, animations, and publish your games to multiple platforms.">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Preview Modal -->
+    <div class="modal-backdrop" id="previewModal">
+        <div class="modal preview-modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="previewModalTitle"></h2>
+                <button class="modal-close" id="previewModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-subtitle">Modules</h3>
+                <div class="modules-list" id="modulesList">
+                    <!-- Modules will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Details Modal -->
+    <div class="modal-backdrop" id="courseDetailsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="courseDetailsTitle"></h2>
+                    <p class="modal-subtitle" id="courseDetailsInstructor"></p>
+                </div>
+                <button class="modal-close" id="courseDetailsClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="courseDetailsImage" src="/placeholder.svg" alt="Course">
+                </div>
+                <div class="modal-badges">
+                    <div class="modal-badge">
+                        <i class="fas fa-star"></i> <span id="courseDetailsRating"></span> Rating
+                    </div>
+                    <div class="modal-badge">
+                        <i class="fas fa-users"></i> <span id="courseDetailsStudents"></span> Students
+                    </div>
+                    <div class="modal-badge">
+                        <i class="fas fa-clock"></i> <span id="courseDetailsDuration"></span> Total
+                    </div>
+                    <div class="modal-badge">
+                        <i class="fas fa-book"></i> <span id="courseDetailsLevel"></span>
+                    </div>
+                </div>
+                <p class="modal-description" id="courseDetailsDescription"></p>
+                <div class="modal-footer">
+                    <div class="course-price">
+                        <span class="current-price" id="courseDetailsPrice"></span>
+                        <span class="original-price" id="courseDetailsOriginalPrice"></span>
+                    </div>
+                    <button class="btn btn-primary">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="course.js"></script>
+</body>
+</html>
