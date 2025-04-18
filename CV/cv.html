@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Profile - John Doe</title>
+    <link rel="stylesheet" href="/CV/style.css">
+</head>
+<body>
+    <!-- Color Picker -->
+    <div class="color-picker">
+        <button class="color-button" style="background-color: #3B82F6;" data-color="#3B82F6" aria-label="Change theme to blue"></button>
+        <button class="color-button" style="background-color: #8B5CF6;" data-color="#8B5CF6" aria-label="Change theme to purple"></button>
+        <button class="color-button" style="background-color: #10B981;" data-color="#10B981" aria-label="Change theme to green"></button>
+        <button class="color-button" style="background-color: #EF4444;" data-color="#EF4444" aria-label="Change theme to red"></button>
+        <button class="color-button" style="background-color: #F59E0B;" data-color="#F59E0B" aria-label="Change theme to amber"></button>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <!-- Profile Section -->
+            <div class="card">
+                <div class="profile-section">
+                    <div class="profile-image-container">
+                        <img src="https://via.placeholder.com/192" alt="Profile" class="profile-image animate-border">
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="profile-name">John Doe</h1>
+                        <p class="profile-title">Senior Web Developer</p>
+                        <div class="profile-buttons">
+                            <button class="primary-button">Download CV</button>
+                            <button class="secondary-button">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Grid -->
+            <div class="two-column-grid">
+                <!-- Skills Section -->
+                <div class="card" id="skills-section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-container">
+                        <div class="skill">
+                            <div class="skill-header">
+                                <span>JavaScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-header">
+                                <span>React</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-header">
+                                <span>Node.js</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-header">
+                                <span>CSS/SCSS</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-header">
+                                <span>TypeScript</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="card">
+                    <h2 class="section-title">Experience</h2>
+                    <div class="experience-container">
+                        <div class="experience-item">
+                            <div class="experience-dot"></div>
+                            <h3 class="experience-title">Senior Developer @ Tech Corp</h3>
+                            <p class="experience-date">2020 - Present</p>
+                            <p class="experience-description">Led team of 10 developers in building enterprise applications</p>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-dot"></div>
+                            <h3 class="experience-title">Web Developer @ Digital Agency</h3>
+                            <p class="experience-date">2017 - 2020</p>
+                            <p class="experience-description">Developed responsive websites and web applications for clients</p>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-dot"></div>
+                            <h3 class="experience-title">Junior Developer @ Startup Inc</h3>
+                            <p class="experience-date">2015 - 2017</p>
+                            <p class="experience-description">Assisted in developing and maintaining web applications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="card">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <img src="https://via.placeholder.com/400x192" alt="E-commerce Platform" class="project-image">
+                        <div class="project-overlay">
+                            <button class="project-button">View Project</button>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="https://via.placeholder.com/400x192" alt="Social Media App" class="project-image">
+                        <div class="project-overlay">
+                            <button class="project-button">View Project</button>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="https://via.placeholder.com/400x192" alt="Portfolio Website" class="project-image">
+                        <div class="project-overlay">
+                            <button class="project-button">View Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Sections -->
+            <div class="card">
+                <h2 class="section-title">Additional Information</h2>
+                <div class="additional-sections">
+                    <div class="section-card">
+                        <h3>General</h3>
+                        <p>Personal information and contact details.</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Specializations</h3>
+                        <p>Frontend Development, Backend Development, UI/UX Design</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Social Links</h3>
+                        <p>LinkedIn, GitHub, Twitter, Portfolio Website</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Academic Information</h3>
+                        <p>Bachelor's in Computer Science, Master's in Software Engineering</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Certifications</h3>
+                        <p>AWS Certified Developer, Google Cloud Professional, React Certification</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Research Projects</h3>
+                        <p>Machine Learning in Web Development, Accessibility Standards Research</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Group Projects</h3>
+                        <p>Open Source Contributions, Hackathon Participations</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Extracurricular Activities</h3>
+                        <p>Tech Meetup Organizer, Coding Bootcamp Mentor</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Personal Statements</h3>
+                        <p>Passionate about creating accessible and user-friendly web applications.</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Career Goals</h3>
+                        <p>Become a Technical Lead, Contribute to Open Source, Mentor Junior Developers</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Motivation Statements</h3>
+                        <p>Driven by solving complex problems and creating impactful digital experiences.</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Scholarships</h3>
+                        <p>Tech Innovation Scholarship, Academic Excellence Award</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Scholarship Preferences</h3>
+                        <p>Research-focused, Industry-partnered, Merit-based</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Financial Aid Status</h3>
+                        <p>Eligible for educational grants and scholarships</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Portfolios</h3>
+                        <p>Web Development, UI/UX Design, Technical Writing</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Video Resumes</h3>
+                        <p>Professional introduction and skills showcase</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Recommendation Letters</h3>
+                        <p>Available from previous employers and academic advisors</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Social Impact</h3>
+                        <p>Volunteer work teaching coding to underprivileged communities</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Availability Preferences</h3>
+                        <p>Full-time, Remote work, Flexible hours</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Profile Analytics</h3>
+                        <p>Skills assessment, Career progression tracking</p>
+                    </div>
+                    <div class="section-card">
+                        <h3>Languages</h3>
+                        <p>English (Native), Spanish (Intermediate), French (Basic)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/CV/main.js"></script>
+</body>
+</html>
