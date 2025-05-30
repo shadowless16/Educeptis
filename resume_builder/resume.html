@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <div class="profile-section">
+                <div class="profile-avatar">
+                    <div class="avatar-placeholder">JD</div>
+                </div>
+                <h2 class="profile-name">John Doe</h2>
+                <p class="profile-title">Web Developer</p>
+                
+                <div class="profile-completion">
+                    <div class="completion-header">
+                        <span>Profile Completion</span>
+                        <span class="completion-percentage">73%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 73%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <h3 class="nav-section-title">Resume Sections</h3>
+                <ul class="nav-list" id="nav-list">
+                    <!-- Navigation items will be dynamically populated -->
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>Last updated: April 26, 2025</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <header class="content-header">
+                    <h1>Resume Builder</h1>
+                    
+                    <div class="tabs-container">
+                        <div class="main-tabs" id="main-tabs">
+                            <!-- Main tabs will be dynamically populated -->
+                        </div>
+                        
+                        <div class="dropdown">
+                            <button class="dropdown-toggle">
+                                <span>More</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu" id="dropdown-menu">
+                                <!-- Dropdown items will be dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="content-sections" id="content-sections">
+                    <!-- Section content will be dynamically loaded -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Templates for dynamic content -->
+    <template id="section-template">
+        <section class="section" id="">
+            <div class="section-header">
+                <h2 class="section-title"></h2>
+                <button class="edit-button">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                </button>
+            </div>
+            <div class="section-content">
+                <!-- Section specific content will be inserted here -->
+            </div>
+        </section>
+    </template>
+
+    <!-- Template for General Information section -->
+    <template id="general-info-template">
+        <div class="cards-grid">
+            <div class="card profile-card">
+                <div class="card-header">
+                    <h3>Profile Photo</h3>
+                </div>
+                <div class="card-content centered">
+                    <div class="large-avatar">JD</div>
+                    <button class="secondary-button">Change Photo</button>
+                </div>
+            </div>
+            
+            <div class="card details-card">
+                <div class="card-header">
+                    <h3>Personal Details</h3>
+                </div>
+                <div class="card-content">
+                    <form class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" value="John" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" value="Doe" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="john.doe@example.com" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" value="+1 (555) 123-4567" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" value="New York, NY" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" value="www.johndoe.com" disabled>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" rows="4" disabled>Experienced web developer with a passion for creating responsive and user-friendly applications. Skilled in JavaScript, React, and Node.js with a strong background in front-end development.</textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Personal Statement section -->
+    <template id="personal-statement-template">
+        <div class="card full-width">
+            <div class="card-content">
+                <div class="view-mode" id="statement-view">
+                    <p>I am a passionate computer science student with a deep interest in artificial intelligence and its applications in solving real-world problems. My journey in technology began when I was 12 years old, tinkering with HTML and CSS to build simple websites. This early exposure sparked my curiosity about how technology can transform the way we live and work.</p>
+                    <p>Through my academic journey, I've developed a strong foundation in computer science principles, algorithms, and data structures. I've also gained practical experience through internships and research projects, where I've applied my knowledge to develop innovative solutions. My experience at Google as a software engineering intern taught me the importance of scalable and maintainable code, while my research work at MIT AI Lab has deepened my understanding of machine learning algorithms and their applications.</p>
+                    <p>I believe that technology should be accessible to everyone and should be used to create positive social impact. This belief drives my involvement in volunteer teaching and mentorship programs, where I help underrepresented groups gain access to technology education. I'm committed to using my skills and knowledge to contribute to technological advancements that improve people's lives and address global challenges.</p>
+                </div>
+                <div class="edit-mode hidden" id="statement-edit">
+                    <textarea id="personal-statement" rows="12">I am a passionate computer science student with a deep interest in artificial intelligence and its applications in solving real-world problems. My journey in technology began when I was 12 years old, tinkering with HTML and CSS to build simple websites. This early exposure sparked my curiosity about how technology can transform the way we live and work.
+
+Through my academic journey, I've developed a strong foundation in computer science principles, algorithms, and data structures. I've also gained practical experience through internships and research projects, where I've applied my knowledge to develop innovative solutions. My experience at Google as a software engineering intern taught me the importance of scalable and maintainable code, while my research work at MIT AI Lab has deepened my understanding of machine learning algorithms and their applications.
+
+I believe that technology should be accessible to everyone and should be used to create positive social impact. This belief drives my involvement in volunteer teaching and mentorship programs, where I help underrepresented groups gain access to technology education. I'm committed to using my skills and knowledge to contribute to technological advancements that improve people's lives and address global challenges.</textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tips-box">
+            <h3>Tips for a Strong Personal Statement:</h3>
+            <ul>
+                <li>Be authentic and showcase your unique personality and experiences</li>
+                <li>Focus on specific examples rather than general statements</li>
+                <li>Highlight your motivations, passions, and future goals</li>
+                <li>Connect your past experiences to your future aspirations</li>
+                <li>Proofread carefully for grammar and clarity</li>
+            </ul>
+        </div>
+    </template>
+
+    <!-- Template for Skills section -->
+    <template id="skills-template">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Programming Languages</h3>
+                    <button class="icon-button">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">TypeScript</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-level">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Java</span>
+                            <span class="skill-level">65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>Frameworks & Libraries</h3>
+                    <button class="icon-button">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">React</span>
+                            <span class="skill-level">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Next.js</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Node.js</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Express</span>
+                            <span class="skill-level">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card full-width">
+            <div class="card-header">
+                <h3>Other Skills</h3>
+                <button class="icon-button">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <div class="tags-container">
+                    <span class="tag">Communication</span>
+                    <span class="tag">Team Leadership</span>
+                    <span class="tag">Problem Solving</span>
+                    <span class="tag">Agile Methodology</span>
+                    <span class="tag">UI/UX Design</span>
+                    <span class="tag">Technical Writing</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Work Experience section -->
+    <template id="work-template">
+        <div class="card full-width experience-card">
+            <div class="card-header">
+                <div>
+                    <h3>Senior Frontend Developer</h3>
+                    <div class="company-info">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Tech Innovations Inc.</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="secondary-button">
+                        <i class="fas fa-pencil-alt"></i> Edit
+                    </button>
+                    <button class="danger-button">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>June 2020 - Present</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                </div>
+                
+                <div class="description">
+                    <p>Leading the frontend development team in building responsive and accessible web applications using React and Next.js.</p>
+                </div>
+                
+                <div class="achievements">
+                    <h4>Key Achievements:</h4>
+                    <ul>
+                        <li>Redesigned the company's main product interface, improving user engagement by 35%</li>
+                        <li>Implemented a component library that reduced development time by 40%</li>
+                        <li>Mentored junior developers and conducted code reviews to ensure code quality</li>
+                    </ul>
+                </div>
+                
+                <div class="skills-used">
+                    <h4>Skills Used:</h4>
+                    <div class="tags-container">
+                        <span class="tag">React</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">Redux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card full-width experience-card">
+            <div class="card-header">
+                <div>
+                    <h3>Full Stack Developer</h3>
+                    <div class="company-info">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Digital Solutions LLC</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="secondary-button">
+                        <i class="fas fa-pencil-alt"></i> Edit
+                    </button>
+                    <button class="danger-button">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>March 2018 - May 2020</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Boston, MA</span>
+                    </div>
+                </div>
+                
+                <div class="description">
+                    <p>Developed and maintained web applications for clients in various industries, focusing on both frontend and backend development.</p>
+                </div>
+                
+                <div class="achievements">
+                    <h4>Key Achievements:</h4>
+                    <ul>
+                        <li>Built a custom CRM system that increased sales team efficiency by 25%</li>
+                        <li>Optimized database queries, reducing load times by 60%</li>
+                        <li>Integrated third-party APIs to enhance application functionality</li>
+                    </ul>
+                </div>
+                
+                <div class="skills-used">
+                    <h4>Skills Used:</h4>
+                    <div class="tags-container">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="primary-button add-button">
+            <i class="fas fa-plus"></i> Add Experience
+        </button>
+    </template>
+
+    <!-- Template for Education section -->
+    <template id="education-template">
+        <div class="card full-width education-card">
+            <div class="card-header">
+                <div>
+                    <h3>Master of Science in Computer Science</h3>
+                    <div class="institution-info">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Stanford University</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="secondary-button">
+                        <i class="fas fa-pencil-alt"></i> Edit
+                    </button>
+                    <button class="danger-button">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>2018 - 2020</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Stanford, CA</span>
+                    </div>
+                </div>
+                
+                <div class="gpa">
+                    <p>GPA: 3.9</p>
+                </div>
+                
+                <div class="coursework">
+                    <h4>Relevant Coursework:</h4>
+                    <div class="tags-container">
+                        <span class="tag">Advanced Algorithms</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Distributed Systems</span>
+                        <span class="tag">Computer Vision</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card full-width education-card">
+            <div class="card-header">
+                <div>
+                    <h3>Bachelor of Science in Computer Engineering</h3>
+                    <div class="institution-info">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Massachusetts Institute of Technology</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="secondary-button">
+                        <i class="fas fa-pencil-alt"></i> Edit
+                    </button>
+                    <button class="danger-button">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>2014 - 2018</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cambridge, MA</span>
+                    </div>
+                </div>
+                
+                <div class="gpa">
+                    <p>GPA: 3.8</p>
+                </div>
+                
+                <div class="coursework">
+                    <h4>Relevant Coursework:</h4>
+                    <div class="tags-container">
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">Computer Architecture</span>
+                        <span class="tag">Operating Systems</span>
+                        <span class="tag">Database Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="primary-button add-button">
+            <i class="fas fa-plus"></i> Add Education
+        </button>
+    </template>
+
+    <!-- Template for Languages section with Specializations content -->
+    <template id="languages-template">
+        <div class="section-content-group">
+            <h3 class="section-subtitle">Language Proficiency</h3>
+            <div class="cards-grid">
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h3>Language Skills</h3>
+                        <button class="icon-button">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="language-list">
+                            <div class="language-item">
+                                <div class="language-info">
+                                    <div class="language-name">English</div>
+                                    <div class="language-level">Native</div>
+                                </div>
+                                <div class="language-bar">
+                                    <div class="language-progress" style="width: 100%"></div>
+                                </div>
+                                <div class="language-details">
+                                    <div class="language-skill">
+                                        <span>Reading</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-skill">
+                                        <span>Writing</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-skill">
+                                        <span>Speaking</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-item">
+                                <div class="language-info">
+                                    <div class="language-name">Spanish</div>
+                                    <div class="language-level">Fluent</div>
+                                </div>
+                                <div class="language-bar">
+                                    <div class="language-progress" style="width: 90%"></div>
+                                </div>
+                                <div class="language-details">
+                                    <div class="language-skill">
+                                        <span>Reading</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-skill">
+                                        <span>Writing</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-skill">
+                                        <span>Speaking</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-item">
+                                <div class="language-info">
+                                    <div class="language-name">French</div>
+                                    <div class="language-level">Intermediate</div>
+                                </div>
+                                <div class="language-bar">
+                                    <div class="language-progress" style="width: 65%"></div>
+                                </div>
+                                <div class="language-details">
+                                    <div class="language-skill">
+                                        <span>Reading</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot"></span>
+                                            <span class="skill-dot"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-skill">
+                                        <span>Writing</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot"></span>
+                                            <span class="skill-dot"></span>
+                                            <span class="skill-dot"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-skill">
+                                        <span>Speaking</span>
+                                        <div class="skill-dots">
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot filled"></span>
+                                            <span class="skill-dot"></span>
+                                            <span class="skill-dot"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3>Add a New Language</h3>
+                </div>
+                <div class="card-content">
+                    <form class="form-grid">
+                        <div class="form-group">
+                            <label for="language-name">Language</label>
+                            <input type="text" id="language-name" placeholder="e.g., German" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="language-level">Proficiency Level</label>
+                            <select id="language-level" disabled>
+                                <option value="">Select level</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="fluent">Fluent</option>
+                                <option value="native">Native</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Reading</label>
+                            <div class="rating-input">
+                                <div class="rating-dots">
+                                    <span class="rating-dot" data-value="1"></span>
+                                    <span class="rating-dot" data-value="2"></span>
+                                    <span class="rating-dot" data-value="3"></span>
+                                    <span class="rating-dot" data-value="4"></span>
+                                    <span class="rating-dot" data-value="5"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Writing</label>
+                            <div class="rating-input">
+                                <div class="rating-dots">
+                                    <span class="rating-dot" data-value="1"></span>
+                                    <span class="rating-dot" data-value="2"></span>
+                                    <span class="rating-dot" data-value="3"></span>
+                                    <span class="rating-dot" data-value="4"></span>
+                                    <span class="rating-dot" data-value="5"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Speaking</label>
+                            <div class="rating-input">
+                                <div class="rating-dots">
+                                    <span class="rating-dot" data-value="1"></span>
+                                    <span class="rating-dot" data-value="2"></span>
+                                    <span class="rating-dot" data-value="3"></span>
+                                    <span class="rating-dot" data-value="4"></span>
+                                    <span class="rating-dot" data-value="5"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="primary-button" disabled>
+                                <i class="fas fa-plus"></i> Add Language
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-content-group">
+            <h3 class="section-subtitle">Technical Specializations</h3>
+            <div class="cards-grid">
+                <div class="card full-width specialization-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Web Development</h3>
+                        </div>
+                        <div class="card-actions">
+                            <button class="secondary-button">
+                                <i class="fas fa-pencil-alt"></i> Edit
+                            </button>
+                            <button class="danger-button">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="specialization-details">
+                            <div class="specialization-level">
+                                <span class="level-label">Proficiency Level:</span>
+                                <div class="level-indicator">
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot filled"></span>
+                                </div>
+                                <span class="level-text">Expert</span>
+                            </div>
+                            
+                            <div class="specialization-description">
+                                <p>Specialized in modern web development with a focus on responsive design, accessibility, and performance optimization. Experienced in building complex single-page applications and progressive web apps.</p>
+                            </div>
+                            
+                            <div class="specialization-technologies">
+                                <h4>Core Technologies:</h4>
+                                <div class="tags-container">
+                                    <span class="tag">HTML5</span>
+                                    <span class="tag">CSS3</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">React</span>
+                                    <span class="tag">Next.js</span>
+                                    <span class="tag">Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card full-width specialization-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Machine Learning</h3>
+                        </div>
+                        <div class="card-actions">
+                            <button class="secondary-button">
+                                <i class="fas fa-pencil-alt"></i> Edit
+                            </button>
+                            <button class="danger-button">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="specialization-details">
+                            <div class="specialization-level">
+                                <span class="level-label">Proficiency Level:</span>
+                                <div class="level-indicator">
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot filled"></span>
+                                    <span class="level-dot"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                                <span class="level-text">Intermediate</span>
+                            </div>
+                            
+                            <div class="specialization-description">
+                                <p>Focused on applying machine learning algorithms to solve real-world problems. Experience in developing predictive models, natural language processing, and computer vision applications.</p>
+                            </div>
+                            
+                            <div class="specialization-technologies">
+                                <h4>Core Technologies:</h4>
+                                <div class="tags-container">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">TensorFlow</span>
+                                    <span class="tag">PyTorch</span>
+                                    <span class="tag">scikit-learn</span>
+                                    <span class="tag">Pandas</span>
+                                    <span class="tag">NumPy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3>Add a New Specialization</h3>
+                </div>
+                <div class="card-content">
+                    <form class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="specialization-name">Specialization Name</label>
+                            <input type="text" id="specialization-name" placeholder="e.g., Cloud Computing" disabled>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Proficiency Level</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="proficiency" value="beginner" disabled>
+                                    <span>Beginner</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="proficiency" value="intermediate" disabled>
+                                    <span>Intermediate</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="proficiency" value="advanced" disabled>
+                                    <span>Advanced</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="proficiency" value="expert" disabled>
+                                    <span>Expert</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="specialization-description">Description</label>
+                            <textarea id="specialization-description" rows="4" placeholder="Describe your specialization and experience in this area" disabled></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="specialization-technologies">Core Technologies</label>
+                            <input type="text" id="specialization-technologies" placeholder="e.g., AWS, Docker, Kubernetes (comma separated)" disabled>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="primary-button" disabled>
+                                <i class="fas fa-plus"></i> Add Specialization
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tips-box">
+            <h3>Tips for Language & Specialization Sections:</h3>
+            <ul>
+                <li>Be honest about your language proficiency levels</li>
+                <li>Include languages that are relevant to the job you're applying for</li>
+                <li>Specify different skill levels for reading, writing, and speaking if they vary</li>
+                <li>Include any language certifications you have (e.g., TOEFL, IELTS, DELF)</li>
+                <li>Focus on specializations that are relevant to your target roles</li>
+                <li>Provide specific examples of how you've applied these specializations</li>
+                <li>Be specific about technologies and methodologies you've mastered</li>
+            </ul>
+        </div>
+    </template>
+
+    <!-- Template for Social Links section -->
+    <template id="social-template">
+        <div class="card full-width">
+            <div class="card-header">
+                <h3>Social Links</h3>
+            </div>
+            <div class="card-content">
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn</label>
+                        <input type="url" id="linkedin" placeholder="https://linkedin.com/in/username" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="url" id="github" placeholder="https://github.com/username" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter">Twitter</label>
+                        <input type="url" id="twitter" placeholder="https://twitter.com/username" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Personal Website</label>
+                        <input type="url" id="website" placeholder="https://yourwebsite.com" disabled>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Certifications section -->
+    <template id="certifications-template">
+        <div class="section-header">
+            <h3>Certifications</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add Certification</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card certification-card" style="border-top: 3px solid #f9bd1a;">
+                <div class="card-content">
+                    <form class="certification-form">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <i class="fas fa-award" style="font-size: 2rem; color: #054d8b;"></i>
+                                <div>
+                                    <input type="text" value="AWS Certified Solutions Architect" class="input-inline" style="font-weight: 600; font-size: 1.1rem;" />
+                                    <input type="text" value="Amazon Web Services" class="input-inline text-light" placeholder="Issued by" />
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="secondary-button save-btn" type="button"><i class="fas fa-save"></i> Save</button>
+                                <button class="danger-button" type="button"><i class="fas fa-trash-alt"></i> Delete</button>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem; gap:1rem;">
+                            <input type="date" value="2022-05-15" class="input-inline text-light" style="max-width: 160px;" />
+                            <input type="date" value="2025-05-15" class="input-inline text-light" style="max-width: 160px;" />
+                        </div>
+                        <div style="margin-top: 0.5rem;">
+                            <input type="text" value="AWS-123456" class="input-inline" placeholder="Credential ID" />
+                            <input type="url" value="#" class="input-inline text-info" placeholder="Verify Credential URL" style="font-size: 0.95rem;" />
+                        </div>
+                        <div style="margin-top: 0.5rem;"><strong>Skills:</strong></div>
+                        <input type="text" value="AWS, Cloud Architecture, Infrastructure as Code" class="input-inline" placeholder="Comma separated skills" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Career Goals section -->
+    <template id="career-template">
+        <div class="section-header">
+            <h3>Career Goals</h3>
+            <button class="secondary-button edit-button"><i class="fas fa-pencil-alt"></i> Edit</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card" style="border-left: 4px solid #38a169;">
+                <div class="card-content">
+                    <div style="font-weight: 600; font-size: 1.1rem;"><i class="far fa-clock" style="color:#38a169;"></i> Short-term (1-2 years)</div>
+                    <textarea rows="4">Complete my Bachelor's degree in Computer Science with a focus on AI and Machine Learning
+Secure a full-time position as a Software Engineer at a leading tech company
+Contribute to open-source projects in the AI/ML space
+Develop a personal project that demonstrates my skills in full-stack development</textarea>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid #38a169;">
+                <div class="card-content">
+                    <div style="font-weight: 600; font-size: 1.1rem;"><i class="fas fa-bullseye" style="color:#38a169;"></i> Medium-term (3-5 years)</div>
+                    <textarea rows="4">Pursue a Master's degree in Artificial Intelligence or Machine Learning
+Advance to a Senior Software Engineer or Machine Learning Engineer role
+Publish research papers in reputable AI conferences
+Mentor junior developers and contribute to the tech community through speaking engagements</textarea>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid #38a169;">
+                <div class="card-content">
+                    <div style="font-weight: 600; font-size: 1.1rem;"><i class="fas fa-bullseye" style="color:#38a169;"></i> Long-term (5+ years)</div>
+                    <textarea rows="4">Lead a team of engineers working on innovative AI solutions
+Start a tech company focused on using AI for social good
+Contribute to the development of ethical AI guidelines and standards
+Teach computer science or AI courses at the university level</textarea>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Financial Aid Status section -->
+    <template id="financial-template">
+        <div class="section-header">
+            <h3>Financial Aid Status</h3>
+            <button class="secondary-button edit-button"><i class="fas fa-pencil-alt"></i> Edit</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card" style="min-width:320px;">
+                <div class="card-content">
+                    <form>
+                        <div style="font-weight:600; font-size:1.1rem; margin-bottom:0.5rem;">Aid Summary: <input type="text" value="2023-2024" class="input-inline" /></div>
+                        <input type="number" value="45000" class="input-inline" style="font-size:2rem; font-weight:700;" />
+                        <div class="text-light">Total Aid</div>
+                        <div style="margin-top:0.5rem;">Tuition & Fees: <input type="number" value="55000" class="input-inline" /></div>
+                        <div>Coverage: <input type="number" value="82" class="input-inline" style="width:60px;" />%</div>
+                        <div>Status: <input type="text" value="Approved" class="input-inline" /></div>
+                        <div class="text-light" style="margin-top:0.5rem;">Last Updated: <input type="date" value="2023-08-15" class="input-inline" /></div>
+                    </form>
+                </div>
+            </div>
+            <div class="card" style="min-width:320px;">
+                <div class="card-content">
+                    <form>
+                        <div style="font-weight:600; font-size:1.1rem; margin-bottom:0.5rem;">Required Documents</div>
+                        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                            <input type="text" value="FAFSA" class="input-inline" /> <input type="text" value="Submitted" class="input-inline" /> <input type="date" value="2023-01-15" class="input-inline" />
+                            <input type="text" value="CSS Profile" class="input-inline" /> <input type="text" value="Submitted" class="input-inline" /> <input type="date" value="2023-01-20" class="input-inline" />
+                            <input type="text" value="Tax Returns" class="input-inline" /> <input type="text" value="Submitted" class="input-inline" /> <input type="date" value="2023-02-05" class="input-inline" />
+                            <input type="text" value="Verification Worksheet" class="input-inline" /> <input type="text" value="Submitted" class="input-inline" /> <input type="date" value="2023-02-10" class="input-inline" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Portfolios section -->
+    <template id="portfolios-template">
+        <div class="section-header">
+            <h3>Portfolios</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add Project</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card portfolio-card">
+                <img src="../Img/Company.jpg" alt="Project Image" class="portfolio-image" />
+                <div class="card-content">
+                    <div class="portfolio-title">Personal Website</div>
+                    <div class="portfolio-description">A responsive portfolio website built with Next.js and Tailwind CSS. Features a clean design, dark mode support, and interactive elements.</div>
+                    <div class="tags-container">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">TypeScript</span>
+                    </div>
+                    <div class="portfolio-links">
+                        <a href="#" class="primary-button">Live Demo</a>
+                        <a href="#" class="secondary-button">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Research Projects section -->
+    <template id="research-template">
+        <div class="section-header">
+            <h3>Research Projects</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add Project</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card research-card">
+                <div class="card-content">
+                    <div class="research-title">AI for Medical Imaging</div>
+                    <div class="research-meta">Institution: Harvard Medical School &bull; 2023-2024</div>
+                    <div class="research-description">Developed deep learning models to assist radiologists in detecting anomalies in X-ray images.</div>
+                    <ul class="research-list">
+                        <li>Published in IEEE Transactions on Medical Imaging</li>
+                        <li>Open-sourced code and dataset</li>
+                    </ul>
+                    <div class="tags-container">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Medical Imaging</span>
+                    </div>
+                    <a href="#" class="secondary-button">Project Repo</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Group Projects section -->
+    <template id="group-template">
+        <div class="section-header">
+            <h3>Group Projects</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add Project</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card group-card">
+                <div class="card-content">
+                    <div class="group-title">Smart Attendance System</div>
+                    <div class="group-meta">Course: Software Engineering &bull; MIT &bull; 2024</div>
+                    <div class="group-description">Developed a facial recognition-based attendance system as a team of 4. My role: Backend API & Database.</div>
+                    <ul class="group-list">
+                        <li>Designed RESTful API with Node.js</li>
+                        <li>Integrated OpenCV for face detection</li>
+                    </ul>
+                    <div class="tags-container">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <div class="group-team">
+                        <span class="team-member"><img src="../Img/Student.jpg" class="avatar" alt="Student" /> Alice</span>
+                        <span class="team-member"><img src="../Img/Teacher.jpeg" class="avatar" alt="Teacher" /> Bob</span>
+                    </div>
+                    <a href="#" class="secondary-button">Project Repo</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Social Impacts section -->
+    <template id="impact-template">
+        <div class="section-header">
+            <h3>Social Impacts</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add Impact</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card impact-card">
+                <div class="card-content">
+                    <div class="impact-title">Mentorship Program</div>
+                    <div class="impact-meta">Organization: Code for Good &bull; Role: Mentor &bull; 2023</div>
+                    <div class="impact-description">Mentored 10+ underrepresented students in web development, helping them build real-world projects and gain confidence in coding.</div>
+                    <ul class="impact-list">
+                        <li>Organized weekly coding sessions</li>
+                        <li>Helped students publish their first websites</li>
+                    </ul>
+                    <div class="tags-container">
+                        <span class="tag">Education</span>
+                        <span class="tag">Mentorship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template for Recommendation Letters section -->
+    <template id="recommendations-template">
+        <div class="section-header">
+            <h3>Recommendation Letters</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Request New</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card recommendation-card">
+                <div class="card-content">
+                    <div class="recommendation-header">
+                        <div>
+                            <div class="recommendation-title">Dr. Jane Smith</div>
+                            <div class="recommendation-meta">Professor, MIT &bull; Academic Reference</div>
+                            <div class="recommendation-meta">Email: jane.smith@mit.edu</div>
+                            <div class="recommendation-meta">Date: 2024-11-15</div>
+                        </div>
+                        <span class="badge status-badge received">Received</span>
+                    </div>
+                    <div class="recommendation-actions">
+                        <button class="secondary-button"><i class="fas fa-eye"></i> View Letter</button>
+                        <button class="primary-button"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Placeholder templates for all missing sections -->
+    <template id="extracurricular-template">
+        <div class="section-header">
+            <h3>Extracurricular Activities</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card"><div class="card-content text-light">No extracurricular activities yet. Click Add to create one.</div></div>
+        </div>
+    </template>
+    <template id="motivation-template">
+        <div class="section-header">
+            <h3>Motivation Statements</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card"><div class="card-content text-light">No motivation statements yet. Click Add to create one.</div></div>
+        </div>
+    </template>
+    <template id="scholarships-template">
+        <div class="section-header">
+            <h3>Scholarships</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card"><div class="card-content text-light">No scholarships yet. Click Add to create one.</div></div>
+        </div>
+    </template>
+    <template id="video-template">
+        <div class="section-header">
+            <h3>Video Resumes</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card"><div class="card-content text-light">No video resumes yet. Click Add to create one.</div></div>
+        </div>
+    </template>
+    <template id="availability-template">
+        <div class="section-header">
+            <h3>Availability Preferences</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card"><div class="card-content text-light">No availability preferences yet. Click Add to create one.</div></div>
+        </div>
+    </template>
+    <template id="analytics-template">
+        <div class="section-header">
+            <h3>Profile Analytics</h3>
+            <button class="primary-button add-button"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div class="cards-grid">
+            <div class="card"><div class="card-content text-light">No profile analytics yet. Click Add to create one.</div></div>
+        </div>
+    </template>
+
+    <!-- Example placeholder for empty dynamic sections -->
+    <template id="empty-placeholder-template">
+        <div class="card">
+            <div class="card-content text-light">No items yet. Click Add to create one.</div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+    <!-- For each dynamic section, add a placeholder card if cards-grid is empty -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.cards-grid').forEach(function(grid) {
+            if (!grid.querySelector('.card')) {
+                var placeholder = document.getElementById('empty-placeholder-template');
+                if (placeholder) {
+                    grid.appendChild(document.importNode(placeholder.content, true));
+                } else {
+                    var div = document.createElement('div');
+                    div.className = 'card';
+                    div.innerHTML = '<div class="card-content text-light">No items yet. Click Add to create one.</div>';
+                    grid.appendChild(div);
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>
